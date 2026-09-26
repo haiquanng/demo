@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { baseState, useScenario, type Base, type Step } from "../lib/scenario";
-import { AgentLog, ScenarioBar, StatusPill, flashProps } from "../components/ui";
+import { AgentLog, ScenarioBar, StatusPill, flashProps } from "../components/legacy";
 
 interface Seg { t: number; text: string; sev?: "bad" | "warn"; fact?: string }
 interface Video { id: string; koc: string; platform: string; views: string; date: string; brand: string; product: string; dur: number; segs: Seg[]; draft?: string }

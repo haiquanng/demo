@@ -1,0 +1,536 @@
+{
+ "P2": {
+  "intents": [
+   "Da dầu mụn nên dùng sữa rửa mặt nào tầm 200k không bị khô căng?",
+   "Tư vấn sữa rửa mặt pH 5.5 dịu nhẹ cho da mụn giá học sinh sinh viên",
+   "Có loại sữa rửa mặt trà xanh nào của Việt Nam làm sạch sâu tốt không?",
+   "Tìm sữa rửa mặt 150ml cho da dầu dưới 200k có số công bố rõ ràng",
+   "Da dầu dễ lên mụn rửa mặt xong hay bị căng rát thì nên đổi loại nào?"
+  ],
+  "ad": {
+   "headline": "Sữa Rửa Mặt Trà Xanh pH 5.5",
+   "description": "Làm sạch sâu mà không khô căng, độ pH 5.5 chuẩn dịu nhẹ, lựa chọn phù hợp cho da dầu và da mụn (150ml).",
+   "cta": "Mua Ngay"
+  },
+  "keywords": [
+   {
+    "keyword": "sữa rửa mặt trà xanh",
+    "intent": "tìm hiểu",
+    "note": "Từ khóa chung theo tên thành phần chính"
+   },
+   {
+    "keyword": "sữa rửa mặt cho da dầu mụn",
+    "intent": "tìm hiểu",
+    "note": "Đúng phân loại da phù hợp trong dữ liệu gốc"
+   },
+   {
+    "keyword": "sữa rửa mặt ph 5.5",
+    "intent": "tìm hiểu",
+    "note": "Đặc tính pH 5.5 nổi bật của sản phẩm"
+   },
+   {
+    "keyword": "sữa rửa mặt hạ vy botanics",
+    "intent": "mua ngay",
+    "note": "Từ khóa thương hiệu kết hợp dòng sản phẩm"
+   },
+   {
+    "keyword": "sữa rửa mặt hạ vy 150ml",
+    "intent": "mua ngay",
+    "note": "Tên thương hiệu kèm dung tích cụ thể"
+   },
+   {
+    "keyword": "sữa rửa mặt trà xanh ph 5.5",
+    "intent": "so sánh",
+    "note": "Kết hợp thành phần và thông số kỹ thuật"
+   }
+  ],
+  "seoTitles": [
+   {
+    "plat": "sp",
+    "title": "Sữa rửa mặt Trà xanh HẠ VY BOTANICS Làm sạch sâu dịu nhẹ da dầu mụn pH 5.5 150ml"
+   },
+   {
+    "plat": "tt",
+    "title": "Làm sạch sâu không khô căng Sữa rửa mặt Trà xanh HẠ VY BOTANICS 150ml pH 5.5"
+   },
+   {
+    "plat": "lz",
+    "title": "Hạ Vy Botanics Sữa Rửa Mặt Trà Xanh Làm Sạch Sâu Dịu Nhẹ Da Dầu Mụn pH 5.5 150ml"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Sữa rửa mặt Trà xanh HẠ VY BOTANICS có độ pH bao nhiêu?",
+    "a": "Sản phẩm có độ pH 5.5.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Sản phẩm phù hợp với loại da nào?",
+    "a": "Phù hợp cho da dầu và da mụn.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Số công bố và hạn sử dụng của sản phẩm là gì?",
+    "a": "Số công bố là 2155/26/CBMP-HCM và hạn sử dụng là 36 tháng.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Sữa rửa mặt này có xuất xứ từ đâu?",
+    "a": "Sản phẩm có xuất xứ từ Việt Nam.",
+    "source": "PDF chân trang tr.3"
+   }
+  ],
+  "softened": [],
+  "model": "gemini-3.8-flash"
+ },
+ "P3": {
+  "intents": [
+   "Da mặt mình đang bị đỏ và rát do nhạy cảm, có loại mặt nạ ngủ nào tầm 250k cấp ẩm và làm dịu tốt không?",
+   "Tìm mặt nạ ngủ chiết xuất rau má không cần rửa lại cho da nhạy cảm",
+   "Gợi ý mặt nạ phục hồi da ban đêm dịu nhẹ giá bình dân khoảng hai trăm mấy nghìn",
+   "Da mình kích ứng hay bị mẩn đỏ, dùng mặt nạ ngủ của hãng nào của Việt Nam thì an toàn?",
+   "Có dòng mặt nạ ngủ rau má nào cấp ẩm sâu dùng qua đêm tiện lợi không cần rửa lại không shop?"
+  ],
+  "ad": {
+   "headline": "Mặt Nạ Ngủ Rau Má Hạ Vy Botanics",
+   "description": "Cấp ẩm sâu, hỗ trợ phục hồi và làm dịu da nhạy cảm qua đêm, tiện lợi không cần rửa lại.",
+   "cta": "Mua Ngay"
+  },
+  "keywords": [
+   {
+    "keyword": "mặt nạ ngủ rau má",
+    "intent": "tìm hiểu",
+    "note": "Từ khóa tên sản phẩm kết hợp thành phần chính người dùng hay tìm kiếm (PDF tr.2)"
+   },
+   {
+    "keyword": "mặt nạ ngủ hạ vy botanics",
+    "intent": "mua ngay",
+    "note": "Tìm kiếm trực tiếp theo tên thương hiệu và dòng sản phẩm (PDF tr.2)"
+   },
+   {
+    "keyword": "mặt nạ phục hồi da nhạy cảm",
+    "intent": "tìm hiểu",
+    "note": "Tìm kiếm theo nhu cầu chăm sóc da nhạy cảm (PDF tr.2)"
+   },
+   {
+    "keyword": "mặt nạ ngủ cấp ẩm không rửa",
+    "intent": "tìm hiểu",
+    "note": "Đặc tính tiện lợi không cần rửa lại của sản phẩm (PDF tr.2)"
+   },
+   {
+    "keyword": "mặt nạ ngủ giảm đỏ",
+    "intent": "so sánh",
+    "note": "Tìm kiếm giải pháp làm dịu và giảm đỏ cho da (PDF tr.2)"
+   },
+   {
+    "keyword": "mặt nạ ngủ rau má 80g",
+    "intent": "mua ngay",
+    "note": "Từ khóa chi tiết kèm quy cách dung tích cụ thể (PDF tr.2)"
+   }
+  ],
+  "seoTitles": [
+   {
+    "plat": "sp",
+    "title": "Mặt Nạ Ngủ Rau Má HẠ VY BOTANICS Phục Hồi Da Nhạy Cảm Cấp Ẩm Sâu Giảm Đỏ 80g"
+   },
+   {
+    "plat": "tt",
+    "title": "Cấp Ẩm Sâu Phục Hồi Da Mặt Nạ Ngủ Rau Má HẠ VY BOTANICS 80g"
+   },
+   {
+    "plat": "lz",
+    "title": "Hạ Vy Botanics Mặt Nạ Ngủ Rau Má Phục Hồi Cấp Ẩm Cho Da Nhạy Cảm 80g"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Mặt nạ ngủ Rau má HẠ VY BOTANICS có cần rửa lại sau khi thoa không?",
+    "a": "Không, sản phẩm dùng qua đêm và không cần rửa lại.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Sản phẩm có công dụng chính là gì?",
+    "a": "Phục hồi da nhạy cảm qua đêm, giảm đỏ và cấp ẩm sâu.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Số công bố mỹ phẩm của sản phẩm là bao nhiêu?",
+    "a": "Số công bố là 2159/26/CBMP-HCM.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Hạn sử dụng và xuất xứ của sản phẩm như thế nào?",
+    "a": "Hạn sử dụng 24 tháng và xuất xứ tại Việt Nam.",
+    "source": "PDF tr.2 và PDF chân trang tr.3"
+   }
+  ],
+  "softened": [
+   {
+    "original": "Phục hồi da nhạy cảm qua đêm, giảm đỏ",
+    "replacement": "Hỗ trợ phục hồi da nhạy cảm qua đêm, làm dịu vùng da đỏ",
+    "ruleId": "R-01"
+   }
+  ],
+  "model": "gemini-3.8-flash"
+ },
+ "P6": {
+  "intents": [
+   "Tìm son dưỡng không bóng dính cho nam giá dưới 100k",
+   "Có thỏi son dưỡng dầu dừa nào của Việt Nam thành phần lành tính không?",
+   "Môi hay bị khô nứt muốn tìm son dưỡng mềm môi dùng hằng ngày tầm 90k",
+   "Gợi ý son dưỡng môi không màu dùng được cho cả nam và nữ",
+   "Son dưỡng dầu dừa Hạ Vy Botanics dùng có bị bết môi không?"
+  ],
+  "ad": {
+   "headline": "Son Dưỡng Dầu Dừa Hạ Vy Botanics",
+   "description": "Giúp môi mềm mọng, không bết dính. Dùng được cho cả nam, xuất xứ Việt Nam.",
+   "cta": "Mua ngay"
+  },
+  "keywords": [
+   {
+    "keyword": "son dưỡng dầu dừa hạ vy",
+    "intent": "mua ngay",
+    "note": "Tìm kiếm chính xác sản phẩm và thương hiệu (dựa trên PDF tr.3)"
+   },
+   {
+    "keyword": "son dưỡng môi không bết dính",
+    "intent": "tìm hiểu",
+    "note": "Khách tìm kiếm theo đặc tính nổi bật của sản phẩm (PDF tr.3)"
+   },
+   {
+    "keyword": "son dưỡng cho nam",
+    "intent": "tìm hiểu",
+    "note": "Sản phẩm dùng được cho cả nam theo công bố (PDF tr.3)"
+   },
+   {
+    "keyword": "son dưỡng mềm môi dưới 100k",
+    "intent": "so sánh",
+    "note": "Giá sản phẩm 89.000đ phù hợp phân khúc này (dữ liệu sản phẩm)"
+   },
+   {
+    "keyword": "son dưỡng dầu dừa 3.5g",
+    "intent": "mua ngay",
+    "note": "Khách tìm theo tên thành phần và quy cách mới (CSV dòng 6)"
+   },
+   {
+    "keyword": "hạ vy botanics son dưỡng",
+    "intent": "so sánh",
+    "note": "Tìm kiếm theo brand để cân nhắc sản phẩm dưỡng môi (PDF tr.3)"
+   }
+  ],
+  "seoTitles": [
+   {
+    "plat": "sp",
+    "title": "Son dưỡng Dầu dừa HẠ VY BOTANICS mềm mọng môi không bết dính 3.5g"
+   },
+   {
+    "plat": "tt",
+    "title": "Mềm mọng môi không bết dính Son dưỡng Dầu dừa HẠ VY BOTANICS 3.5g"
+   },
+   {
+    "plat": "lz",
+    "title": "Hạ Vy Botanics Son Dưỡng Dầu Dừa Mềm Mọng Môi Không Bết Dính 3.5g"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Son dưỡng Dầu dừa Hạ Vy Botanics có gây bết dính không?",
+    "a": "Sản phẩm cho cảm giác môi mềm mọng, không bết dính và dùng được cho cả nam.",
+    "source": "PDF tr.3"
+   },
+   {
+    "q": "Sản phẩm có số công bố mỹ phẩm là bao nhiêu?",
+    "a": "Số công bố mỹ phẩm của sản phẩm là 2158/26/CBMP-HCM.",
+    "source": "PDF tr.3"
+   },
+   {
+    "q": "Hạn sử dụng và xuất xứ của thỏi son dưỡng này như thế nào?",
+    "a": "Sản phẩm có hạn sử dụng 24 tháng và xuất xứ tại Việt Nam.",
+    "source": "PDF tr.3, PDF chân trang tr.3"
+   },
+   {
+    "q": "Quy cách khối lượng hiện tại của sản phẩm là bao nhiêu?",
+    "a": "Khối lượng là 3.5g (thay đổi từ lô 08/2026 so với bản 4g trước đó).",
+    "source": "CSV dòng 6, PDF tr.3"
+   }
+  ],
+  "softened": [
+   {
+    "original": "Môi mềm mọng cả ngày",
+    "replacement": "Giúp môi mềm mọng",
+    "ruleId": "R-01"
+   }
+  ],
+  "model": "gemini-3.8-flash"
+ },
+ "P5": {
+  "intents": [
+   "Dạo này tóc mình rụng nhiều quá lại còn nhanh bết dầu, có dầu gội bưởi thiên nhiên nào tầm 200k tốt không?",
+   "Tóc dầu hay gãy rụng thì dùng dầu gội bưởi nào lành tính của Việt Nam vậy mọi người?",
+   "Xin gợi ý dầu gội đầu từ tinh dầu bưởi nguyên chất giúp giảm rụng tóc cho da đầu nhờn",
+   "Có loại dầu gội nào dung tích tầm 300ml chiết xuất bưởi dành riêng cho tóc dầu không?",
+   "Ngân sách khoảng 200k đến 250k muốn mua dầu gội bưởi thuần chay chăm sóc tóc rụng thì chọn loại nào?"
+  ],
+  "ad": {
+   "headline": "Dầu Gội Bưởi HẠ VY BOTANICS",
+   "description": "Tinh dầu vỏ bưởi nguyên chất hỗ trợ chăm sóc tóc rụng, công thức phù hợp cho tóc dầu.",
+   "cta": "Mua ngay"
+  },
+  "keywords": [
+   {
+    "keyword": "dầu gội bưởi hạ vy botanics",
+    "intent": "mua ngay",
+    "note": "Khách tìm chính xác tên sản phẩm và thương hiệu để đặt mua (suy luận từ nhu cầu tìm đúng thương hiệu)."
+   },
+   {
+    "keyword": "dầu gội bưởi cho tóc dầu",
+    "intent": "tìm hiểu",
+    "note": "Tìm kiếm giải pháp theo loại tóc phù hợp trong thông tin sản phẩm (nguồn: PDF tr.3)."
+   },
+   {
+    "keyword": "dầu gội bưởi giảm rụng tóc",
+    "intent": "tìm hiểu",
+    "note": "Tìm kiếm theo nhu cầu cải thiện rụng tóc nhưng dùng từ an toàn tuân thủ R-01."
+   },
+   {
+    "keyword": "dầu gội tinh dầu bưởi 300ml",
+    "intent": "mua ngay",
+    "note": "Tìm kiếm kết hợp thành phần chính và quy cách chai 300ml (nguồn: PDF tr.3)."
+   },
+   {
+    "keyword": "dầu gội giảm rụng tóc tóc dầu",
+    "intent": "so sánh",
+    "note": "Tìm kiếm sản phẩm phù hợp vấn đề tóc dầu và gãy rụng để so sánh các dòng trên sàn."
+   },
+   {
+    "keyword": "dầu gội hạ vy botanics 300ml",
+    "intent": "mua ngay",
+    "note": "Tìm sản phẩm theo thương hiệu và dung tích chuẩn xác (nguồn: PDF tr.3)."
+   }
+  ],
+  "seoTitles": [
+   {
+    "plat": "sp",
+    "title": "Dầu gội Bưởi HẠ VY BOTANICS giảm gãy rụng chăm sóc tóc dầu 300ml"
+   },
+   {
+    "plat": "tt",
+    "title": "Chăm sóc tóc dầu giảm gãy rụng Dầu gội Bưởi HẠ VY BOTANICS 300ml"
+   },
+   {
+    "plat": "lz",
+    "title": "Hạ Vy Botanics Dầu Gội Bưởi 300ml Giảm Rụng Tóc Cho Tóc Dầu"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Dầu gội Bưởi HẠ VY BOTANICS phù hợp với loại tóc nào?",
+    "a": "Sản phẩm phù hợp với tóc dầu.",
+    "source": "PDF tr.3"
+   },
+   {
+    "q": "Thành phần chính của dầu gội Bưởi HẠ VY BOTANICS là gì?",
+    "a": "Thành phần chính là tinh dầu vỏ bưởi nguyên chất.",
+    "source": "PDF tr.3"
+   },
+   {
+    "q": "Số công bố và hạn sử dụng của sản phẩm là bao nhiêu?",
+    "a": "Số công bố là 2157/26/CBMP-HCM và hạn sử dụng là 36 tháng.",
+    "source": "PDF tr.3"
+   },
+   {
+    "q": "Dầu gội Bưởi HẠ VY BOTANICS có xuất xứ từ đâu?",
+    "a": "Sản phẩm có xuất xứ từ Việt Nam.",
+    "source": "PDF chân trang tr.3"
+   }
+  ],
+  "softened": [
+   {
+    "original": "kích mọc tóc, chữa rụng tóc sau 4 tuần",
+    "replacement": "giúp giảm gãy rụng và nuôi dưỡng tóc chắc khỏe (suy luận: thay thế từ 'chữa rụng tóc', 'kích mọc tóc' và bỏ cam kết thời gian 4 tuần để tuân thủ quy định mỹ phẩm)",
+    "ruleId": "R-01"
+   }
+  ],
+  "model": "gemini-3.8-flash"
+ },
+ "P4": {
+  "intents": [
+   "Tìm kem chống nắng nâng tông nhẹ kiềm dầu tầm giá 300k cho da dầu đi học đi làm",
+   "Gợi ý kem chống nắng phổ rộng SPF50+ PA++++ dùng được cho cả da khô và da dầu",
+   "Kem chống nắng nâng tông tự nhiên không bị bết rít xuất xứ Việt Nam giá khoảng 300.000đ",
+   "Da hỗn hợp thiên dầu nên dùng kem chống nắng nào kiềm dầu nhẹ mặt dưới 350k?",
+   "Kem chống nắng Hạ Vy Botanics 50ml dùng có nâng tông và hỗ trợ kiềm dầu tốt không?"
+  ],
+  "ad": {
+   "headline": "Kem Chống Nắng Hạ Vy Botanics SPF50+",
+   "description": "Chỉ số SPF50+ PA++++ giúp bảo vệ da, nâng tông nhẹ nhàng và hỗ trợ kiềm dầu, phù hợp cho cả da dầu và da khô.",
+   "cta": "Mua ngay"
+  },
+  "keywords": [
+   {
+    "keyword": "kem chống nắng hạ vy botanics",
+    "intent": "mua ngay",
+    "note": "Từ khóa tìm kiếm trực diện thương hiệu và dòng sản phẩm khi có nhu cầu chốt đơn"
+   },
+   {
+    "keyword": "kem chống nắng nâng tông kiềm dầu",
+    "intent": "tìm hiểu",
+    "note": "Tìm kiếm giải pháp theo công dụng chính được nêu trong nguồn PDF tr.3"
+   },
+   {
+    "keyword": "kem chống nắng spf50 pa++++",
+    "intent": "so sánh",
+    "note": "So sánh thông số bảo vệ màng lọc giữa các sản phẩm chống nắng trên sàn"
+   },
+   {
+    "keyword": "kem chống nắng cho da dầu và da khô",
+    "intent": "tìm hiểu",
+    "note": "Khách tìm kiếm loại kem chống nắng đa dụng theo loại da phù hợp trong nguồn PDF tr.3"
+   },
+   {
+    "keyword": "kcn kiềm dầu nâng tông 50ml",
+    "intent": "mua ngay",
+    "note": "Tìm kiếm tắt có kèm quy cách thể tích thực tế 50ml của sản phẩm"
+   },
+   {
+    "keyword": "kem chống nắng việt nam chính hãng",
+    "intent": "so sánh",
+    "note": "Khách hàng muốn tìm và so sánh mỹ phẩm có xuất xứ Việt Nam chính ngạch có số công bố"
+   }
+  ],
+  "seoTitles": [
+   {
+    "plat": "sp",
+    "title": "Kem Chống Nắng SPF50+ PA++++ Hạ Vy Botanics nâng tông kiềm dầu 50ml"
+   },
+   {
+    "plat": "tt",
+    "title": "Nâng tông nhẹ kiềm dầu Kem Chống Nắng Hạ Vy Botanics SPF50+ PA++++ 50ml"
+   },
+   {
+    "plat": "lz",
+    "title": "Hạ Vy Botanics Kem Chống Nắng SPF50+ PA++++ Nâng Tông Kiềm Dầu 50ml"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Kem chống nắng Hạ Vy Botanics có chỉ số bảo vệ là bao nhiêu?",
+    "a": "Sản phẩm có chỉ số bảo vệ là SPF50+ PA++++.",
+    "source": "PDF tr.3"
+   },
+   {
+    "q": "Kem chống nắng phù hợp với loại da nào?",
+    "a": "Công thức sản phẩm phù hợp cho cả da dầu và da khô.",
+    "source": "PDF tr.3"
+   },
+   {
+    "q": "Số công bố mỹ phẩm và xuất xứ của sản phẩm là gì?",
+    "a": "Số công bố là 2156/26/CBMP-HCM và xuất xứ tại Việt Nam.",
+    "source": "PDF tr.3 và PDF chân trang tr.3"
+   },
+   {
+    "q": "Hạn sử dụng của kem chống nắng là bao lâu?",
+    "a": "Hạn sử dụng là 24 tháng.",
+    "source": "PDF tr.3"
+   }
+  ],
+  "softened": [
+   {
+    "original": "Nâng tông nhẹ, kiềm dầu suốt 8 giờ.",
+    "replacement": "Nâng tông nhẹ, hỗ trợ kiềm dầu thoáng mịn.",
+    "ruleId": "R-01"
+   }
+  ],
+  "model": "gemini-3.8-flash"
+ },
+ "P1": {
+  "intents": [
+   "Da mình sau mụn bị thâm nhiều, có serum vitamin C nào tầm 400k thấm nhanh không gây bí da không?",
+   "Tư vấn giúp mình serum sáng da mờ thâm mụn của Việt Nam có công bố rõ ràng với ngân sách dưới 500k.",
+   "Mình đang tìm serum kết hợp Vitamin C và Niacinamide để cải thiện da không đều màu và đốm nâu nhẹ.",
+   "Có loại serum vitamin C 15% nào của thương hiệu Việt Nam dùng ổn cho người mới làm quen không?",
+   "Tài chính khoảng 400k nên mua serum nào để hỗ trợ làm sáng da và mờ thâm mụn an toàn?"
+  ],
+  "ad": {
+   "headline": "Serum Vitamin C 15% Hạ Vy Botanics",
+   "description": "Vitamin C 15% cùng Niacinamide 4% hỗ trợ sáng da, mờ thâm, kết cấu mỏng nhẹ thấm nhanh không nhờn rít.",
+   "cta": "Tìm hiểu ngay"
+  },
+  "keywords": [
+   {
+    "keyword": "serum vitamin c 15 hạ vy botanics",
+    "intent": "mua ngay",
+    "note": "Khách tìm chính xác tên sản phẩm và thương hiệu để đặt mua"
+   },
+   {
+    "keyword": "serum sáng da mờ thâm",
+    "intent": "tìm hiểu",
+    "note": "Nhu cầu tìm giải pháp cải thiện thâm mụn và dưỡng sáng da phổ biến"
+   },
+   {
+    "keyword": "serum vitamin c mờ thâm",
+    "intent": "mua ngay",
+    "note": "Khách có nhu cầu rõ ràng với thành phần Vitamin C để xử lý vết thâm"
+   },
+   {
+    "keyword": "serum vitamin c việt nam",
+    "intent": "tìm hiểu",
+    "note": "Khách ưu tiên tìm mỹ phẩm nội địa có nguồn gốc xuất xứ rõ ràng"
+   },
+   {
+    "keyword": "serum vitamin c giá dưới 400k",
+    "intent": "so sánh",
+    "note": "Khách tìm sản phẩm theo khoảng giá để so sánh lựa chọn phù hợp ngân sách"
+   },
+   {
+    "keyword": "serum niacinamide vitamin c",
+    "intent": "so sánh",
+    "note": "Khách tìm kiếm tổ hợp thành phần hoạt chất dưỡng sáng để đối chiếu hiệu quả"
+   }
+  ],
+  "seoTitles": [
+   {
+    "plat": "sp",
+    "title": "Serum Vitamin C 15% Hạ Vy Botanics làm sáng da mờ thâm đốm nâu 30ml"
+   },
+   {
+    "plat": "tt",
+    "title": "Sáng da mờ thâm với Serum Vitamin C 15% Hạ Vy Botanics 30ml thấm nhanh"
+   },
+   {
+    "plat": "lz",
+    "title": "Hạ Vy Botanics Serum Vitamin C 15% 30ml Hỗ Trợ Sáng Da Mờ Thâm"
+   }
+  ],
+  "facts": [
+   {
+    "q": "Sản phẩm có số công bố mỹ phẩm chính thức không?",
+    "a": "Có, sản phẩm có số công bố là 2154/26/CBMP-HCM.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Hạn sử dụng của serum là bao lâu?",
+    "a": "Hạn sử dụng là 24 tháng kể từ ngày sản xuất.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Thành phần hoạt chất chính trong serum gồm những gì?",
+    "a": "Sản phẩm chứa Vitamin C 15%, Niacinamide 4% và chiết xuất cam thảo.",
+    "source": "PDF tr.2"
+   },
+   {
+    "q": "Sản phẩm có nguồn gốc xuất xứ từ đâu?",
+    "a": "Sản phẩm có xuất xứ tại Việt Nam.",
+    "source": "PDF chân trang tr.3"
+   }
+  ],
+  "softened": [
+   {
+    "original": "Làm sáng da, mờ thâm, trị dứt điểm nám chỉ sau 14 ngày! Kết cấu mỏng nhẹ, thấm nhanh.",
+    "replacement": "Hỗ trợ làm sáng da, mờ thâm, cải thiện tình trạng nám da. Kết cấu mỏng nhẹ, thấm nhanh.",
+    "ruleId": "R-01"
+   }
+  ],
+  "model": "gemini-3.8-flash"
+ }
+}

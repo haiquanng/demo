@@ -1,0 +1,32 @@
+{
+ "rule": {
+  "plat": "lz",
+  "text": "Không sử dụng cam kết hiệu quả gắn với mốc thời gian cụ thể (như sau X ngày, suốt X giờ) trong tiêu đề hoặc mô tả khi chưa có chứng nhận kiểm nghiệm."
+ },
+ "explanation": "Lazada từ chối sản phẩm do đưa ra cam kết hiệu quả kèm mốc thời gian cụ thể mà thiếu tài liệu chứng nhận kiểm nghiệm theo quy định (Nguồn: Thông báo từ sàn, mã lỗi CLAIM_TIME_BOUND).",
+ "affected": [
+  {
+   "productId": "P4",
+   "field": "description",
+   "phrase": "Nâng tông nhẹ, kiềm dầu suốt 8 giờ. Công thức phù hợp cả da dầu và da khô.",
+   "replacement": "Nâng tông nhẹ, hỗ trợ kiềm dầu hiệu quả. Công thức phù hợp cả da dầu và da khô.",
+   "label": "Cam kết mốc thời gian kiềm dầu"
+  },
+  {
+   "productId": "P1",
+   "field": "description",
+   "phrase": "Làm sáng da, mờ thâm, trị dứt điểm nám chỉ sau 14 ngày! Kết cấu mỏng nhẹ, thấm nhanh.",
+   "replacement": "Hỗ trợ làm sáng da, mờ thâm nám. Kết cấu mỏng nhẹ, thấm nhanh.",
+   "label": "Cam kết mốc thời gian trị nám"
+  },
+  {
+   "productId": "P5",
+   "field": "description",
+   "phrase": "Tinh dầu vỏ bưởi nguyên chất giúp kích mọc tóc, chữa rụng tóc sau 4 tuần. Hợp tóc dầu.",
+   "replacement": "Tinh dầu vỏ bưởi nguyên chất giúp nuôi dưỡng nang tóc, hỗ trợ giảm rụng tóc. Hợp tóc dầu.",
+   "label": "Cam kết mốc thời gian rụng tóc"
+  }
+ ],
+ "model": "gemini-3.8-flash",
+ "notice": "[Lazada] Sản phẩm \"Hạ Vy Botanics Kem Chống Nắng SPF50+ PA++++ 50ml\" bị từ chối. Lý do: tiêu đề hoặc mô tả chứa cam kết hiệu quả gắn với mốc thời gian (ví dụ \"suốt 8 giờ\", \"sau 14 ngày\") khi chưa có chứng nhận kiểm nghiệm. Vui lòng chỉnh sửa và gửi lại. Mã lỗi: CLAIM_TIME_BOUND"
+}

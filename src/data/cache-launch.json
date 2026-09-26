@@ -1,0 +1,1590 @@
+[
+ {
+  "type": "stage",
+  "stage": "read",
+  "at": 29
+ },
+ {
+  "type": "model",
+  "model": "gemini-3.8-flash",
+  "at": 6580
+ },
+ {
+  "type": "product",
+  "product": {
+   "id": "P1",
+   "name": "SERUM VITAMIN C 15%",
+   "brand": "HẠ VY BOTANICS",
+   "size": "30ml",
+   "price": 390000,
+   "sku": "HV-VC30",
+   "claims": [
+    {
+     "text": "Làm sáng da, mờ thâm, trị dứt điểm nám chỉ sau 14 ngày! Kết cấu mỏng nhẹ, thấm nhanh.",
+     "source": "PDF tr.2"
+    }
+   ],
+   "facts": [
+    {
+     "key": "Số công bố",
+     "value": "2154/26/CBMP-HCM",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng kể từ NSX",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Thành phần chính",
+     "value": "Vitamin C 15%, Niacinamide 4%, chiết xuất cam thảo",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3"
+    }
+   ],
+   "flags": [
+    {
+     "kind": "risky",
+     "field": "claims",
+     "detail": "Từ 'trị dứt điểm nám chỉ sau 14 ngày' có nguy cơ vi phạm quy định quảng cáo mỹ phẩm."
+    }
+   ]
+  },
+  "at": 6580
+ },
+ {
+  "type": "product",
+  "product": {
+   "id": "P2",
+   "name": "Sữa rửa mặt Trà xanh",
+   "brand": "HẠ VY BOTANICS",
+   "size": "150ml",
+   "price": 185000,
+   "sku": "HV-SRM150",
+   "claims": [
+    {
+     "text": "Làm sạch sâu mà không khô căng, pH 5.5.",
+     "source": "PDF tr.2"
+    }
+   ],
+   "facts": [
+    {
+     "key": "Số công bố",
+     "value": "2155/26/CBMP-HCM",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "36 tháng",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Loại da phù hợp",
+     "value": "Da dầu, da mụn",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3"
+    }
+   ],
+   "flags": []
+  },
+  "at": 6581
+ },
+ {
+  "type": "product",
+  "product": {
+   "id": "P3",
+   "name": "Mặt nạ ngủ Rau má",
+   "brand": "HẠ VY BOTANICS",
+   "size": "80g",
+   "price": 250000,
+   "sku": "HV-MNRM80",
+   "claims": [
+    {
+     "text": "Phục hồi da nhạy cảm qua đêm, giảm đỏ, cấp ẩm sâu. Không cần rửa lại.",
+     "source": "PDF tr.2"
+    }
+   ],
+   "facts": [
+    {
+     "key": "Số công bố",
+     "value": "2159/26/CBMP-HCM",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng",
+     "source": "PDF tr.2"
+    },
+    {
+     "key": "Loại da phù hợp",
+     "value": "Da nhạy cảm",
+     "source": "Suy luận từ công dụng 'Phục hồi da nhạy cảm' (PDF tr.2)"
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3"
+    }
+   ],
+   "flags": []
+  },
+  "at": 6581
+ },
+ {
+  "type": "product",
+  "product": {
+   "id": "P4",
+   "name": "KEM CHỐNG NẮNG SPF50+ PA++++",
+   "brand": "HẠ VY BOTANICS",
+   "size": "50ml",
+   "price": 320000,
+   "sku": "HV-KCN50",
+   "claims": [
+    {
+     "text": "Nâng tông nhẹ, kiềm dầu suốt 8 giờ. Công thức phù hợp cả da dầu và da khô.",
+     "source": "PDF tr.3"
+    }
+   ],
+   "facts": [
+    {
+     "key": "Số công bố",
+     "value": "2156/26/CBMP-HCM",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Loại da phù hợp",
+     "value": "Phù hợp cả da dầu và da khô",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3"
+    }
+   ],
+   "flags": []
+  },
+  "at": 6581
+ },
+ {
+  "type": "product",
+  "product": {
+   "id": "P5",
+   "name": "Dầu gội Bưởi",
+   "brand": "HẠ VY BOTANICS",
+   "size": "300ml",
+   "price": 210000,
+   "sku": "HV-DGB300",
+   "claims": [
+    {
+     "text": "Tinh dầu vỏ bưởi nguyên chất giúp kích mọc tóc, chữa rụng tóc sau 4 tuần. Hợp tóc dầu.",
+     "source": "PDF tr.3"
+    }
+   ],
+   "facts": [
+    {
+     "key": "Số công bố",
+     "value": "2157/26/CBMP-HCM",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "36 tháng",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Loại tóc phù hợp",
+     "value": "Tóc dầu",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Thành phần chính",
+     "value": "Tinh dầu vỏ bưởi nguyên chất",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3"
+    }
+   ],
+   "flags": [
+    {
+     "kind": "risky",
+     "field": "claims",
+     "detail": "Từ 'chữa rụng tóc' mang tính điều trị y tế, vi phạm quy định quảng cáo mỹ phẩm."
+    }
+   ]
+  },
+  "at": 6581
+ },
+ {
+  "type": "product",
+  "product": {
+   "id": "P6",
+   "name": "Son dưỡng Dầu dừa",
+   "brand": "HẠ VY BOTANICS",
+   "size": "3.5g",
+   "price": 89000,
+   "sku": "HV-SDD35",
+   "claims": [
+    {
+     "text": "Môi mềm mọng cả ngày, không bết dính. Dùng được cho cả nam.",
+     "source": "PDF tr.3"
+    }
+   ],
+   "facts": [
+    {
+     "key": "Số công bố",
+     "value": "2158/26/CBMP-HCM",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng",
+     "source": "PDF tr.3"
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3"
+    }
+   ],
+   "flags": [
+    {
+     "kind": "conflict",
+     "field": "size",
+     "detail": "PDF tr.3 ghi 'thỏi 4g', nhưng CSV dòng 6 ghi '3.5g' (đổi quy cách từ lô 08/2026)."
+    }
+   ]
+  },
+  "at": 6581
+ },
+ {
+  "type": "stage",
+  "stage": "build",
+  "ms": 6529,
+  "at": 6581
+ },
+ {
+  "type": "agent",
+  "plat": "sp",
+  "status": "running",
+  "at": 6581
+ },
+ {
+  "type": "agent",
+  "plat": "tt",
+  "status": "running",
+  "at": 6581
+ },
+ {
+  "type": "agent",
+  "plat": "lz",
+  "status": "running",
+  "at": 6581
+ },
+ {
+  "type": "listing",
+  "plat": "tt",
+  "listing": {
+   "productId": "P3",
+   "categoryPath": [
+    "Làm đẹp & Chăm sóc cá nhân",
+    "Chăm sóc da",
+    "Mặt nạ"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Phục hồi da nhạy cảm Mặt nạ ngủ Rau má HẠ VY BOTANICS 80g",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog sản phẩm (brand)",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "80g",
+     "source": "Catalog sản phẩm (size)",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2159/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 250000,
+   "issues": [],
+   "decision": {
+    "summary": "Sản phẩm là mặt nạ ngủ dạng bôi nên xếp vào ngành Mặt nạ và tiêu đề đưa lợi ích phục hồi da lên trước theo quy ước TikTok Shop.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm 'Mặt nạ ngủ Rau má' và dung tích 80g",
+      "source": "Catalog sản phẩm (name, size)"
+     },
+     {
+      "text": "Công dụng 'Phục hồi da nhạy cảm qua đêm, giảm đỏ, cấp ẩm sâu. Không cần rửa lại.'",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Tiêu đề ưu tiên nêu lợi ích chính và ngắn gọn nên lược bớt một số mô tả phụ như cấp ẩm sâu.",
+    "next": "Người duyệt kiểm tra và phê duyệt listing để đăng tải lên TikTok Shop."
+   }
+  },
+  "at": 9163
+ },
+ {
+  "type": "listing",
+  "plat": "tt",
+  "listing": {
+   "productId": "P2",
+   "categoryPath": [
+    "Làm đẹp & Chăm sóc cá nhân",
+    "Chăm sóc da",
+    "Làm sạch da mặt"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Làm sạch sâu dịu nhẹ Sữa rửa mặt Trà xanh HẠ VY BOTANICS 150ml pH 5.5",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog P2",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "150ml",
+     "source": "Catalog P2",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2155/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 185000,
+   "issues": [],
+   "decision": {
+    "summary": "Chọn ngành Làm sạch da mặt và đặt tiêu đề ưu tiên lợi ích làm sạch sâu dịu nhẹ dưới 100 ký tự chuẩn TikTok Shop.",
+    "evidence": [
+     {
+      "text": "Sản phẩm là Sữa rửa mặt Trà xanh dung tích 150ml",
+      "source": "Catalog P2"
+     },
+     {
+      "text": "Làm sạch sâu mà không khô căng, pH 5.5",
+      "source": "PDF tr.2"
+     },
+     {
+      "text": "Số công bố 2155/26/CBMP-HCM",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Tiêu đề ưu tiên nêu bật lợi ích làm sạch và độ pH nên phải lược bớt thông tin về loại da phù hợp.",
+    "next": "Người duyệt kiểm tra lại định dạng hiển thị thuộc tính trước khi bấm đăng tải."
+   }
+  },
+  "at": 9528
+ },
+ {
+  "type": "listing",
+  "plat": "sp",
+  "listing": {
+   "productId": "P6",
+   "categoryPath": [
+    "Sắc Đẹp",
+    "Trang điểm môi",
+    "Son dưỡng"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Son dưỡng Dầu dừa Hạ Vy Botanics mềm mọng môi 3.5g",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "Hạ Vy Botanics",
+     "source": "Catalog P6",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "3.5g",
+     "source": "CSV dòng 6",
+     "inferred": true
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2158/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 89000,
+   "issues": [
+    {
+     "ruleId": "R-05",
+     "severity": "warn",
+     "field": "attribute",
+     "phrase": null,
+     "reason": "Lệch quy cách giữa PDF tr.3 ('thỏi 4g') và CSV dòng 6 ('3.5g'). Ưu tiên nguồn mới CSV dòng 6 (lô 08/2026).",
+     "fix": {
+      "from": "thỏi 4g",
+      "to": "3.5g",
+      "label": "Xác nhận quy cách 3.5g"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Chọn danh mục Son dưỡng và tiêu đề chuẩn hóa Shopee dựa trên sản phẩm son dưỡng có xuất xứ Việt Nam và công bố hợp lệ.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm Son dưỡng Dầu dừa",
+      "source": "Catalog P6"
+     },
+     {
+      "text": "Số công bố 2158/26/CBMP-HCM và HSD 24 tháng",
+      "source": "PDF tr.3"
+     },
+     {
+      "text": "Đổi quy cách thành 3.5g từ lô 08/2026",
+      "source": "CSV dòng 6"
+     }
+    ],
+    "tradeoff": "Ưu tiên chọn quy cách 3.5g theo nguồn mới CSV nhưng cần người dùng duyệt để tránh khiếu nại khách hàng.",
+    "next": "Người duyệt cần kiểm tra và xác nhận quy cách thực tế là 3.5g trước khi đẩy lên sàn."
+   }
+  },
+  "at": 9651
+ },
+ {
+  "type": "listing",
+  "plat": "sp",
+  "listing": {
+   "productId": "P2",
+   "categoryPath": [
+    "Sắc Đẹp",
+    "Chăm sóc da mặt",
+    "Sữa rửa mặt"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Sữa rửa mặt Trà xanh HẠ VY BOTANICS Làm sạch sâu pH 5.5 150ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Thông tin sản phẩm",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "150ml",
+     "source": "Thông tin sản phẩm",
+     "inferred": false
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "36 tháng",
+     "source": "PDF tr.2",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2155/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 185000,
+   "issues": [],
+   "decision": {
+    "summary": "Chọn danh mục Sữa rửa mặt và tạo tiêu đề theo cấu trúc tên + thương hiệu + công dụng + quy cách theo đúng dữ liệu catalog.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là Sữa rửa mặt Trà xanh, dung tích 150ml",
+      "source": "Thông tin sản phẩm"
+     },
+     {
+      "text": "Công dụng làm sạch sâu mà không khô căng, pH 5.5",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Tiêu đề giữ nguyên tên thương hiệu viết hoa theo catalog thay vì hạ về dạng thông thường.",
+    "next": "Người duyệt kiểm tra lại định dạng chữ hoa của thương hiệu trước khi đồng bộ lên Shopee."
+   }
+  },
+  "at": 9653
+ },
+ {
+  "type": "listing",
+  "plat": "tt",
+  "listing": {
+   "productId": "P4",
+   "categoryPath": [
+    "Làm đẹp & Chăm sóc cá nhân",
+    "Chăm sóc da",
+    "Chống nắng"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Nâng tông nhẹ kiềm dầu Kem Chống Nắng HẠ VY BOTANICS SPF50+ PA++++ 50ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog P4 trường brand",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "50ml",
+     "source": "Catalog P4 trường size",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2156/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 320000,
+   "issues": [],
+   "decision": {
+    "summary": "Chọn ngành hàng Chống nắng và tiêu đề ưu tiên lợi ích nâng tông kiềm dầu đúng quy ước TikTok Shop.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là KEM CHỐNG NẮNG SPF50+ PA++++",
+      "source": "Catalog P4 trường name"
+     },
+     {
+      "text": "Lợi ích sản phẩm nêu Nâng tông nhẹ, kiềm dầu suốt 8 giờ",
+      "source": "PDF tr.3"
+     }
+    ],
+    "tradeoff": "Tiêu đề ưu tiên công năng nổi bật và rút gọn dưới 100 ký tự nên lược bỏ thông tin về thời gian 8 giờ.",
+    "next": "Người duyệt xác nhận tiêu đề nháp và duyệt đăng listing lên TikTok Shop."
+   }
+  },
+  "at": 9653
+ },
+ {
+  "type": "listing",
+  "plat": "lz",
+  "listing": {
+   "productId": "P4",
+   "categoryPath": [
+    "Sức khỏe & Làm đẹp",
+    "Chăm sóc da",
+    "Chống nắng"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Hạ Vy Botanics Kem Chống Nắng Spf50+ Pa++++ 50ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog P4",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "50ml",
+     "source": "Catalog P4",
+     "inferred": false
+    },
+    {
+     "key": "Phù hợp với",
+     "value": "Phù hợp cả da dầu và da khô",
+     "source": "PDF tr.3",
+     "inferred": true
+    },
+    {
+     "key": "Số công bố",
+     "value": "2156/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 320000,
+   "issues": [
+    {
+     "ruleId": "R-03",
+     "severity": "warn",
+     "field": "attribute",
+     "phrase": null,
+     "reason": "Thuộc tính 'Phù hợp với' được suy luận từ trường 'Loại da phù hợp' trong nguồn.",
+     "fix": {
+      "from": null,
+      "to": "Phù hợp cả da dầu và da khô",
+      "label": "Xác nhận giá trị suy luận"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm là kem chống nắng nên chọn danh mục Chống nắng và đặt tiêu đề chuẩn quy ước Lazada bắt đầu bằng thương hiệu viết hoa chữ cái đầu.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm: KEM CHỐNG NẮNG SPF50+ PA++++",
+      "source": "Catalog P4"
+     },
+     {
+      "text": "Công thức phù hợp cả da dầu và da khô",
+      "source": "PDF tr.3"
+     }
+    ],
+    "tradeoff": "Tiêu đề được tinh gọn theo quy ước Lazada nên không đưa hết các công dụng phụ như nâng tông hay kiềm dầu.",
+    "next": "Người duyệt cần kiểm tra và xác nhận giá trị suy luận của thuộc tính 'Phù hợp với'."
+   }
+  },
+  "at": 9839
+ },
+ {
+  "type": "listing",
+  "plat": "tt",
+  "listing": {
+   "productId": "P1",
+   "categoryPath": [
+    "Làm đẹp & Chăm sóc cá nhân",
+    "Chăm sóc da",
+    "Tinh chất"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Làm sáng mờ thâm trị dứt điểm nám Serum Vitamin C 15% Hạ Vy Botanics 30ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog JSON trường brand",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "30ml",
+     "source": "Catalog JSON trường size",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2154/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 390000,
+   "issues": [
+    {
+     "ruleId": "R-01",
+     "severity": "bad",
+     "field": "title",
+     "phrase": "trị dứt điểm nám",
+     "reason": "Mỹ phẩm không được cam kết công dụng điều trị theo quy định quảng cáo và luật R-01.",
+     "fix": {
+      "from": "trị dứt điểm nám",
+      "to": "hỗ trợ mờ nám",
+      "label": "Đổi thành hỗ trợ mờ nám"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Chọn danh mục Tinh chất vì sản phẩm là serum chứa Vitamin C 15% và tạo tiêu đề nháp giữ nguyên cam kết từ catalog để ghi nhận vi phạm.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là SERUM VITAMIN C 15%",
+      "source": "Catalog JSON trường name"
+     },
+     {
+      "text": "Số công bố mỹ phẩm 2154/26/CBMP-HCM",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Giữ cụm từ vi phạm trị dứt điểm nám trong tiêu đề nháp giúp người duyệt thấy rõ rủi ro cần sửa nhưng listing chưa thể duyệt đăng ngay.",
+    "next": "Duyệt áp dụng đề xuất sửa tiêu đề để loại bỏ từ cấm điều trị trước khi publish."
+   }
+  },
+  "at": 9840
+ },
+ {
+  "type": "listing",
+  "plat": "sp",
+  "listing": {
+   "productId": "P3",
+   "categoryPath": [
+    "Sắc Đẹp",
+    "Chăm sóc da mặt",
+    "Mặt nạ"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Mặt nạ ngủ Rau má HẠ VY BOTANICS Phục hồi da cấp ẩm sâu 80g",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog sản phẩm P3",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "80g",
+     "source": "Catalog sản phẩm P3",
+     "inferred": false
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng",
+     "source": "PDF tr.2",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2159/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 250000,
+   "issues": [],
+   "decision": {
+    "summary": "Chọn danh mục Mặt nạ và tạo tiêu đề chuẩn Shopee kết hợp tên, thương hiệu, công dụng dưỡng ẩm phục hồi và trọng lượng 80g.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là Mặt nạ ngủ Rau má, thương hiệu HẠ VY BOTANICS, khối lượng 80g",
+      "source": "Catalog sản phẩm P3"
+     },
+     {
+      "text": "Công dụng chính là Phục hồi da nhạy cảm qua đêm, giảm đỏ, cấp ẩm sâu",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Rút ngắn mô tả công dụng trên tiêu đề để đảm bảo dưới 120 ký tự và không dùng từ trị liệu.",
+    "next": "Người duyệt kiểm tra lại thông tin và xác nhận phê duyệt listing để đăng tải lên Shopee."
+   }
+  },
+  "at": 9891
+ },
+ {
+  "type": "listing",
+  "plat": "tt",
+  "listing": {
+   "productId": "P6",
+   "categoryPath": [
+    "Làm đẹp & Chăm sóc cá nhân",
+    "Trang điểm",
+    "Môi"
+   ],
+   "categoryConfidence": 0.9,
+   "categoryAlternative": null,
+   "title": "Son dưỡng Dầu dừa HẠ VY BOTANICS mềm mọng môi không bết dính 3.5g",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog P6",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "3.5g",
+     "source": "CSV dòng 6 (lô mới 08/2026)",
+     "inferred": true
+    },
+    {
+     "key": "Số công bố",
+     "value": "2158/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 89000,
+   "issues": [
+    {
+     "ruleId": "R-05",
+     "severity": "warn",
+     "field": "attribute",
+     "phrase": null,
+     "reason": "Quy cách bị lệch: PDF tr.3 ghi 'thỏi 4g' nhưng CSV dòng 6 ghi '3.5g' do đổi quy cách từ lô 08/2026. Cần xác nhận nguồn mới.",
+     "fix": {
+      "from": null,
+      "to": "3.5g",
+      "label": "Xác nhận quy cách 3.5g"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Chọn danh mục Môi vì sản phẩm là son dưỡng môi dầu dừa, tiêu đề tối ưu theo chuẩn TikTok Shop dưới 100 ký tự và nêu lợi ích mềm mọng.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm 'Son dưỡng Dầu dừa' và công dụng 'Môi mềm mọng cả ngày, không bết dính'",
+      "source": "PDF tr.3"
+     },
+     {
+      "text": "Quy cách cập nhật '3.5g' cho lô mới",
+      "source": "CSV dòng 6"
+     }
+    ],
+    "tradeoff": "Cần chấp nhận rủi ro thông tin quy cách 3.5g theo CSV mới hơn trước khi có sự xác nhận kiểm kho thực tế so với PDF tr.3 cũ.",
+    "next": "Người duyệt cần kiểm tra và xác nhận quy cách thực tế là 3.5g hay 4g của lô hàng hiện tại."
+   }
+  },
+  "at": 9897
+ },
+ {
+  "type": "listing",
+  "plat": "lz",
+  "listing": {
+   "productId": "P3",
+   "categoryPath": [
+    "Sức khỏe & Làm đẹp",
+    "Chăm sóc da",
+    "Mặt nạ ngủ"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Hạ Vy Botanics Mặt Nạ Ngủ Rau Má 80g",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog P3",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "80g",
+     "source": "Catalog P3",
+     "inferred": false
+    },
+    {
+     "key": "Phù hợp với",
+     "value": "Da nhạy cảm",
+     "source": "Suy luận từ công dụng 'Phục hồi da nhạy cảm' (PDF tr.2)",
+     "inferred": true
+    },
+    {
+     "key": "Số công bố",
+     "value": "2159/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 250000,
+   "issues": [
+    {
+     "ruleId": "R-03",
+     "severity": "warn",
+     "field": "attribute",
+     "phrase": null,
+     "reason": "Thuộc tính 'Phù hợp với' được suy luận từ công dụng 'Phục hồi da nhạy cảm' cần xác nhận.",
+     "fix": {
+      "from": null,
+      "to": "Da nhạy cảm",
+      "label": "Xác nhận loại da phù hợp"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm là mặt nạ ngủ rau má được xếp đúng danh mục Mặt nạ ngủ và đặt tiêu đề chuẩn quy ước Lazada.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là 'Mặt nạ ngủ Rau má'",
+      "source": "Catalog P3"
+     },
+     {
+      "text": "Công dụng 'Không cần rửa lại' và 'qua đêm' xác định dạng mặt nạ ngủ",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Tiêu đề giữ ngắn gọn theo đúng chuẩn viết hoa đầu từ thay vì nhồi nhét toàn bộ công dụng phục hồi.",
+    "next": "Người duyệt kiểm tra và phê duyệt giá trị suy luận cho thuộc tính Phù hợp với."
+   }
+  },
+  "at": 9984
+ },
+ {
+  "type": "listing",
+  "plat": "sp",
+  "listing": {
+   "productId": "P5",
+   "categoryPath": [
+    "Sắc Đẹp",
+    "Chăm sóc tóc",
+    "Dầu gội"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Dầu gội Bưởi HẠ VY BOTANICS kích mọc tóc chữa rụng tóc 300ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "300ml",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "36 tháng",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2157/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 210000,
+   "issues": [
+    {
+     "ruleId": "R-01",
+     "severity": "bad",
+     "field": "title",
+     "phrase": "kích mọc tóc chữa rụng tóc",
+     "reason": "Mỹ phẩm không được tuyên bố điều trị hoặc cam kết y tế như kích mọc tóc, chữa rụng tóc.",
+     "fix": {
+      "from": "kích mọc tóc chữa rụng tóc",
+      "to": "giảm gãy rụng nuôi dưỡng tóc",
+      "label": "Sửa cụm từ cam kết điều trị"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm được xếp vào danh mục Dầu gội và tạo tiêu đề bám sát thông tin công dụng catalog trước khi lọc vi phạm.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là Dầu gội Bưởi dung tích 300ml",
+      "source": "PDF tr.3"
+     },
+     {
+      "text": "Công bố công dụng kích mọc tóc, chữa rụng tóc",
+      "source": "PDF tr.3"
+     }
+    ],
+    "tradeoff": "Tiêu đề nháp giữ nguyên nội dung gốc catalog để người duyệt kiểm soát nhưng có nguy cơ bị từ chối nếu không chỉnh sửa trước khi đăng.",
+    "next": "Phê duyệt áp dụng phương án sửa tiêu đề an toàn để đăng bán sản phẩm."
+   }
+  },
+  "at": 9985
+ },
+ {
+  "type": "listing",
+  "plat": "lz",
+  "listing": {
+   "productId": "P6",
+   "categoryPath": [
+    "Sức khỏe & Làm đẹp",
+    "Trang điểm",
+    "Son dưỡng môi"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Hạ Vy Botanics Son Dưỡng Dầu Dừa 3.5g",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog sản phẩm",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "3.5g",
+     "source": "CSV dòng 6",
+     "inferred": true
+    },
+    {
+     "key": "Phù hợp với",
+     "value": "Mọi đối tượng (cả nam và nữ)",
+     "source": "PDF tr.3 (suy luận từ câu 'Dùng được cho cả nam')",
+     "inferred": true
+    },
+    {
+     "key": "Số công bố",
+     "value": "2158/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 89000,
+   "issues": [
+    {
+     "ruleId": "R-05",
+     "severity": "warn",
+     "field": "attribute",
+     "phrase": null,
+     "reason": "Lệch thông tin quy cách giữa PDF tr.3 ('thỏi 4g') và CSV dòng 6 ('3.5g'). Đang tạm ưu tiên 3.5g theo lô mới.",
+     "fix": {
+      "from": "3.5g",
+      "to": "3.5g",
+      "label": "Xác nhận quy cách 3.5g"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm được xếp vào Son dưỡng môi và đặt tiêu đề chuẩn quy ước Lazada với thương hiệu ở đầu.",
+    "evidence": [
+     {
+      "text": "Sản phẩm là 'Son dưỡng Dầu dừa' thuộc thương hiệu 'HẠ VY BOTANICS'",
+      "source": "Catalog sản phẩm"
+     },
+     {
+      "text": "Số công bố 2158/26/CBMP-HCM",
+      "source": "PDF tr.3"
+     }
+    ],
+    "tradeoff": "Chọn quy cách 3.5g theo cập nhật mới nhất từ CSV nhưng có rủi ro nếu tồn kho cũ 4g vẫn đang bán.",
+    "next": "Người duyệt cần kiểm tra thực tế lô hàng xuất bán để xác nhận quy cách 3.5g hay 4g."
+   }
+  },
+  "at": 10063
+ },
+ {
+  "type": "listing",
+  "plat": "lz",
+  "listing": {
+   "productId": "P5",
+   "categoryPath": [
+    "Sức khỏe & Làm đẹp",
+    "Chăm sóc tóc",
+    "Dầu gội"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Hạ Vy Botanics Dầu Gội Bưởi 300ml Kích Mọc Tóc Chữa Rụng Tóc Cho Tóc Dầu",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "300ml",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Phù hợp với",
+     "value": "Tóc dầu",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2157/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 210000,
+   "issues": [
+    {
+     "ruleId": "R-01",
+     "severity": "bad",
+     "field": "title",
+     "phrase": "Kích Mọc Tóc Chữa Rụng Tóc",
+     "reason": "Mỹ phẩm không được tuyên bố công dụng điều trị hoặc cam kết như 'kích mọc tóc' và 'chữa rụng tóc'.",
+     "fix": {
+      "from": "Kích Mọc Tóc Chữa Rụng Tóc",
+      "to": "Hỗ Trợ Giảm Gãy Rụng",
+      "label": "Bỏ từ trị bệnh"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm được xếp vào Dầu gội vì tên và công dụng là dầu gội chăm sóc tóc bưởi.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là Dầu gội Bưởi",
+      "source": "PDF tr.3"
+     },
+     {
+      "text": "Số công bố mỹ phẩm 2157/26/CBMP-HCM",
+      "source": "PDF tr.3"
+     }
+    ],
+    "tradeoff": "Tiêu đề nháp giữ cụm từ quảng bá gốc nên cần can thiệp sửa từ vi phạm trước khi đăng bán.",
+    "next": "Người duyệt cần bấm duyệt phương án sửa tiêu đề để loại bỏ cụm 'kích mọc tóc, chữa rụng tóc'."
+   }
+  },
+  "at": 10067
+ },
+ {
+  "type": "listing",
+  "plat": "sp",
+  "listing": {
+   "productId": "P1",
+   "categoryPath": [
+    "Sắc Đẹp",
+    "Chăm sóc da mặt",
+    "Serum & Tinh chất"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Serum Vitamin C 15% Hạ Vy Botanics làm sáng da mờ thâm trị dứt điểm nám 30ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "Hạ Vy Botanics",
+     "source": "Catalog dòng brand",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "30ml",
+     "source": "Catalog dòng size",
+     "inferred": false
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng kể từ NSX",
+     "source": "PDF tr.2",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2154/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 390000,
+   "issues": [
+    {
+     "ruleId": "R-01",
+     "severity": "bad",
+     "field": "title",
+     "phrase": "trị dứt điểm nám",
+     "reason": "Mỹ phẩm không được cam kết kết quả hoặc tuyên bố công dụng điều trị như 'trị dứt điểm'.",
+     "fix": {
+      "from": "trị dứt điểm nám",
+      "to": "hỗ trợ mờ nám",
+      "label": "Đổi sang hỗ trợ mờ nám"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm là tinh chất dưỡng da mặt nên chọn danh mục Serum & Tinh chất và cấu trúc tiêu đề theo chuẩn Tên + Thương hiệu + Công dụng + Quy cách.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm SERUM VITAMIN C 15% dạng lỏng thấm nhanh",
+      "source": "PDF tr.2"
+     },
+     {
+      "text": "Số công bố 2154/26/CBMP-HCM chứng nhận mỹ phẩm",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Giữ nguyên cụm từ từ catalog trong bản nháp tiêu đề giúp minh bạch lỗi nhưng cần sửa ngay trước khi đăng bán.",
+    "next": "Duyệt phê duyệt sửa cụm từ 'trị dứt điểm nám' thành 'hỗ trợ mờ nám' để hoàn tất đăng bán."
+   }
+  },
+  "at": 10222
+ },
+ {
+  "type": "listing",
+  "plat": "lz",
+  "listing": {
+   "productId": "P1",
+   "categoryPath": [
+    "Sức khỏe & Làm đẹp",
+    "Chăm sóc da",
+    "Serum & Tinh chất"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Hạ Vy Botanics Serum Vitamin C 15% 30ml Trị Dứt Điểm Nám",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog name/brand",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "30ml",
+     "source": "Catalog size",
+     "inferred": false
+    },
+    {
+     "key": "Phù hợp với",
+     "value": "Mọi loại da, da thâm nám",
+     "source": "Suy luận từ công dụng làm sáng da, mờ thâm nám (PDF tr.2)",
+     "inferred": true
+    },
+    {
+     "key": "Số công bố",
+     "value": "2154/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 390000,
+   "issues": [
+    {
+     "ruleId": "R-01",
+     "severity": "bad",
+     "field": "title",
+     "phrase": "Trị Dứt Điểm Nám",
+     "reason": "Mỹ phẩm không được cam kết kết quả hoặc dùng từ điều trị như 'trị dứt điểm'.",
+     "fix": {
+      "from": "Trị Dứt Điểm Nám",
+      "to": "Hỗ Trợ Mờ Thâm Nám",
+      "label": "Đổi thành mờ thâm nám"
+     }
+    },
+    {
+     "ruleId": "R-03",
+     "severity": "warn",
+     "field": "attribute",
+     "phrase": null,
+     "reason": "Thuộc tính 'Phù hợp với' được agent suy luận từ công dụng mờ thâm.",
+     "fix": {
+      "from": null,
+      "to": "Mọi loại da, da thâm nám",
+      "label": "Xác nhận loại da phù hợp"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm được xếp vào danh mục Serum & Tinh chất theo tên và kết cấu serum từ catalog, tiêu đề đặt theo quy ước Lazada và giữ cụm từ gốc để duyệt.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm chứa cụm 'SERUM VITAMIN C 15%'",
+      "source": "Catalog name"
+     },
+     {
+      "text": "Mô tả có 'Kết cấu mỏng nhẹ, thấm nhanh'",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Giữ cụm từ nhạy cảm 'Trị Dứt Điểm Nám' trong tiêu đề nháp để hiển thị vi phạm rõ ràng thay vì tự động lược bỏ.",
+    "next": "Người duyệt cần bấm áp dụng sửa cụm từ cam kết điều trị trong tiêu đề và xác nhận giá trị thuộc tính suy luận."
+   }
+  },
+  "at": 10387
+ },
+ {
+  "type": "listing",
+  "plat": "tt",
+  "listing": {
+   "productId": "P5",
+   "categoryPath": [
+    "Làm đẹp & Chăm sóc cá nhân",
+    "Chăm sóc tóc",
+    "Dầu gội"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": [
+    "Làm đẹp & Chăm sóc cá nhân",
+    "Chăm sóc tóc",
+    "Điều trị tóc"
+   ],
+   "title": "Kích mọc tóc, chữa rụng tóc Dầu gội Bưởi HẠ VY BOTANICS 300ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog sản phẩm P5",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "300ml",
+     "source": "Catalog sản phẩm P5 (size)",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2157/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 210000,
+   "issues": [
+    {
+     "ruleId": "R-01",
+     "severity": "bad",
+     "field": "title",
+     "phrase": "Kích mọc tóc, chữa rụng tóc",
+     "reason": "Mỹ phẩm không được tuyên bố công dụng điều trị hoặc cam kết như kích mọc tóc, chữa rụng tóc theo luật R-01.",
+     "fix": {
+      "from": "Kích mọc tóc, chữa rụng tóc",
+      "to": "Giúp giảm gãy rụng tóc",
+      "label": "Đổi thành giảm gãy rụng"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm được phân loại vào nhóm Dầu gội dựa trên tên gọi và công năng làm sạch, dưỡng tóc dầu.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là Dầu gội Bưởi dung tích 300ml",
+      "source": "Catalog sản phẩm P5"
+     },
+     {
+      "text": "Số công bố mỹ phẩm 2157/26/CBMP-HCM và thành phần tinh dầu bưởi cho tóc dầu",
+      "source": "PDF tr.3"
+     }
+    ],
+    "tradeoff": "Tiêu đề giữ nguyên tuyên bố nháp từ catalog để báo lỗi R-01 trước khi duyệt.",
+    "next": "Duyệt sửa cụm từ 'Kích mọc tóc, chữa rụng tóc' sang công dụng an toàn trước khi đăng sàn."
+   }
+  },
+  "at": 10393
+ },
+ {
+  "type": "agent",
+  "plat": "tt",
+  "status": "done",
+  "ms": 3833,
+  "count": 6,
+  "at": 10393
+ },
+ {
+  "type": "listing",
+  "plat": "sp",
+  "listing": {
+   "productId": "P4",
+   "categoryPath": [
+    "Sắc Đẹp",
+    "Chống nắng",
+    "Kem chống nắng mặt"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "KEM CHỐNG NẮNG SPF50+ PA++++ HẠ VY BOTANICS Nâng tông kiềm dầu 50ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog P4",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "50ml",
+     "source": "Catalog P4",
+     "inferred": false
+    },
+    {
+     "key": "Xuất xứ",
+     "value": "Việt Nam",
+     "source": "PDF chân trang tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Hạn sử dụng",
+     "value": "24 tháng",
+     "source": "PDF tr.3",
+     "inferred": false
+    },
+    {
+     "key": "Số công bố",
+     "value": "2156/26/CBMP-HCM",
+     "source": "PDF tr.3",
+     "inferred": false
+    }
+   ],
+   "price": 320000,
+   "issues": [
+    {
+     "ruleId": "R-04",
+     "severity": "warn",
+     "field": "title",
+     "phrase": "KEM CHỐNG NẮNG SPF50+ PA++++ HẠ VY BOTANICS",
+     "reason": "Quy ước tiêu đề Shopee không được viết hoa toàn bộ từ khóa.",
+     "fix": {
+      "from": "KEM CHỐNG NẮNG SPF50+ PA++++ HẠ VY BOTANICS",
+      "to": "Kem chống nắng SPF50+ PA++++ Hạ Vy Botanics",
+      "label": "Đổi thành chữ thường chuẩn Shopee"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm là kem chống nắng dung tích 50ml phù hợp danh mục Kem chống nắng mặt và tiêu đề tuân theo cấu trúc Tên + Brand + Công dụng + Quy cách.",
+    "evidence": [
+     {
+      "text": "Tên 'KEM CHỐNG NẮNG SPF50+ PA++++', thương hiệu 'HẠ VY BOTANICS', dung tích '50ml'",
+      "source": "Catalog P4"
+     },
+     {
+      "text": "Công năng nâng tông nhẹ, kiềm dầu, phù hợp da dầu và khô",
+      "source": "PDF tr.3"
+     }
+    ],
+    "tradeoff": "Giữ nguyên chữ hoa từ tên gốc catalog trong tiêu đề nháp để kiểm tra đối chiếu trước khi chuẩn hóa định dạng chữ.",
+    "next": "Người duyệt xác nhận chuyển định dạng viết hoa của tiêu đề sang viết hoa chữ cái đầu theo chuẩn Shopee."
+   }
+  },
+  "at": 10393
+ },
+ {
+  "type": "agent",
+  "plat": "sp",
+  "status": "done",
+  "ms": 3838,
+  "count": 6,
+  "at": 10393
+ },
+ {
+  "type": "listing",
+  "plat": "lz",
+  "listing": {
+   "productId": "P2",
+   "categoryPath": [
+    "Sức khỏe & Làm đẹp",
+    "Chăm sóc da",
+    "Sữa rửa mặt"
+   ],
+   "categoryConfidence": 0.95,
+   "categoryAlternative": null,
+   "title": "Hạ Vy Botanics Sữa Rửa Mặt Trà Xanh 150ml",
+   "attributes": [
+    {
+     "key": "Thương hiệu",
+     "value": "HẠ VY BOTANICS",
+     "source": "Catalog JSON field brand",
+     "inferred": false
+    },
+    {
+     "key": "Quy cách",
+     "value": "150ml",
+     "source": "Catalog JSON field size",
+     "inferred": false
+    },
+    {
+     "key": "Phù hợp với",
+     "value": "Da dầu, da mụn",
+     "source": "PDF tr.2",
+     "inferred": true
+    },
+    {
+     "key": "Số công bố",
+     "value": "2155/26/CBMP-HCM",
+     "source": "PDF tr.2",
+     "inferred": false
+    }
+   ],
+   "price": 185000,
+   "issues": [
+    {
+     "ruleId": "R-03",
+     "severity": "warn",
+     "field": "attribute",
+     "phrase": null,
+     "reason": "Thuộc tính 'Phù hợp với' được suy luận và gán từ 'Loại da phù hợp' trong nguồn PDF tr.2.",
+     "fix": {
+      "from": null,
+      "to": "Da dầu, da mụn",
+      "label": "Xác nhận thuộc tính suy luận"
+     }
+    }
+   ],
+   "decision": {
+    "summary": "Sản phẩm được phân loại vào Sữa rửa mặt theo đúng tên danh mục sản phẩm và đặt tiêu đề chuẩn quy ước Lazada.",
+    "evidence": [
+     {
+      "text": "Tên sản phẩm là Sữa rửa mặt Trà xanh dung tích 150ml",
+      "source": "Catalog JSON field name và size"
+     },
+     {
+      "text": "Công bố và tính năng làm sạch sâu với độ pH 5.5",
+      "source": "PDF tr.2"
+     }
+    ],
+    "tradeoff": "Tiêu đề được viết hoa chuẩn hóa từng từ theo quy chuẩn Lazada thay vì giữ nguyên chữ IN HOA của tên thương hiệu gốc.",
+    "next": "Người duyệt xác nhận lại trường thuộc tính 'Phù hợp với' được ánh xạ từ nguồn 'Loại da phù hợp'."
+   }
+  },
+  "at": 10394
+ },
+ {
+  "type": "agent",
+  "plat": "lz",
+  "status": "done",
+  "ms": 3832,
+  "count": 6,
+  "at": 10394
+ },
+ {
+  "type": "stage",
+  "stage": "review",
+  "ms": 10369,
+  "at": 10394
+ },
+ {
+  "type": "done",
+  "ms": 10369,
+  "at": 10394
+ }
+]

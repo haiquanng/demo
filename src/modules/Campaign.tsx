@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { baseState, useScenario, type Base, type Step } from "../lib/scenario";
 import { BRANDS, PLATS, TODAY, vnd, type PlatId } from "../data/common";
-import { AgentLog, ScenarioBar, flashProps } from "../components/ui";
+import { AgentLog, ScenarioBar, flashProps } from "../components/legacy";
 
 /* ---------- Lịch sale ---------- */
 

@@ -1,6 +1,6 @@
 import { baseState, useScenario, type Base, type Step } from "../lib/scenario";
 import { PLATS, vnd, type PlatId } from "../data/common";
-import { AgentLog, ScenarioBar, flashProps } from "../components/ui";
+import { AgentLog, ScenarioBar, flashProps } from "../components/legacy";
 
 type CellState = "idle" | "pushed" | "ok" | "bad" | "warn" | "paused" | "fixed";
 interface Cell { state: CellState; shown: string; note?: string; needsApproval?: boolean }

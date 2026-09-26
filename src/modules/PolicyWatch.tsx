@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { baseState, useScenario, type Base, type Step } from "../lib/scenario";
 import { BRANDS, pct } from "../data/common";
-import { AgentLog, ScenarioBar, flashProps } from "../components/ui";
+import { AgentLog, ScenarioBar, flashProps } from "../components/legacy";
 
 interface Notice { id: string; plat: string; date: string; raw: string; change?: { scope: string; kind: string; effective: string; from: string; to: string } }
 const NOTICES: Notice[] = [
