@@ -1,0 +1,628 @@
+<title>LênSàn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F4; --surface:#FFFFFF; --surface-2:#E6EAEF; --ink:#15202B; --muted:#586573; --line:#D3DAE2;
+  --accent:#2B4FC4; --accent-ink:#FFFFFF;
+  --ok:#1D8752; --warn:#A96B0C; --bad:#C0392F; --live:#0F6E8C;
+  --mark-bad:#F8D9D5; --mark-warn:#F7E6C4;
+  --shadow:0 10px 30px rgba(21,32,43,.14);
+  --f-ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-display:"Bricolage Grotesque","Be Vietnam Pro",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E141A; --surface:#161F28; --surface-2:#1E2933; --ink:#E4EAF0; --muted:#98A6B3; --line:#2A3743;
+    --accent:#86A0FF; --accent-ink:#0E141A;
+    --ok:#4CC28A; --warn:#E3AA45; --bad:#F2766B; --live:#4BB7D6;
+    --mark-bad:#5A2521; --mark-warn:#4F3A12;
+    --shadow:0 10px 30px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E141A; --surface:#161F28; --surface-2:#1E2933; --ink:#E4EAF0; --muted:#98A6B3; --line:#2A3743;
+  --accent:#86A0FF; --accent-ink:#0E141A;
+  --ok:#4CC28A; --warn:#E3AA45; --bad:#F2766B; --live:#4BB7D6;
+  --mark-bad:#5A2521; --mark-warn:#4F3A12;
+  --shadow:0 10px 30px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{max-width:1480px;margin:0 auto;padding-inline:20px;padding-block:18px 40px;display:grid;gap:16px}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.brand h1{font-family:var(--f-display);font-size:30px;line-height:1;margin:0;letter-spacing:-.01em}
+.brand h1 span{color:var(--accent)}
+.brand p{margin:0;color:var(--muted)}
+.ctx{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px;font-size:12.5px;white-space:nowrap}
+.chip.note{border-style:dashed;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* scenario bar */
+.scen{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:12px}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.steps li{display:flex;align-items:center;gap:8px;padding:5px 11px 5px 5px;border-radius:999px;background:var(--surface-2);color:var(--muted);font-size:13px}
+.steps li .n{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;background:var(--surface);border:1px solid var(--line)}
+.steps li.done{color:var(--ink)}
+.steps li.done .n{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.steps li.cur{background:var(--accent);color:var(--accent-ink)}
+.steps li.cur .n{background:var(--accent-ink);color:var(--accent);border-color:var(--accent-ink)}
+.scen-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.scen-desc{max-width:78ch;margin:0}
+.scen-desc b{font-weight:600}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 13px;cursor:pointer;font-weight:500}
+.btn:hover:not(:disabled){border-color:var(--accent)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.notice{display:grid;gap:6px}
+.notice label{font-size:12.5px;color:var(--muted)}
+.notice textarea{width:100%;min-height:64px;resize:vertical;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink);padding:8px 10px;font:13px/1.5 var(--f-ui)}
+
+/* main layout */
+.main{display:grid;grid-template-columns:260px minmax(0,1fr) 330px;gap:16px;align-items:start}
+@media (max-width:1180px){.main{grid-template-columns:minmax(0,1fr) 320px}.col-src{grid-column:1 / -1}}
+@media (max-width:820px){.main{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:12px;align-content:start}
+.panel h2{font-family:var(--f-display);font-size:17px;margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.panel h2 small{font-family:var(--f-ui);font-weight:500;font-size:12px;color:var(--muted)}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--muted);font-weight:600}
+
+/* sources + products */
+.files{display:grid;gap:6px}
+.file{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center;padding:7px;border:1px solid var(--line);border-radius:8px}
+.file .ext{font-family:var(--f-mono);font-size:10.5px;font-weight:500;text-align:center;border-radius:5px;padding:6px 0;background:var(--surface-2)}
+.file div{min-width:0}
+.file b{display:block;font-weight:500;font-size:12.5px;overflow-wrap:anywhere}
+.file small{color:var(--muted);font-size:12px}
+.file small.read{color:var(--ok)}
+.plist{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.plist li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;padding:7px;border-radius:8px;background:var(--surface-2)}
+.plist .meta{color:var(--muted);font-size:12px}
+.plist .flag{display:inline-block;margin-top:3px;font-size:12px;color:var(--warn);font-weight:500}
+.empty{color:var(--muted);font-size:13px;margin:0}
+@media (max-width:1180px){.col-src .panel{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.col-src .panel>h2,.col-src .panel>.eyebrow{grid-column:1 / -1}}
+
+/* product tile */
+.ph{--h:30;position:relative;aspect-ratio:1;max-width:100%;border-radius:7px;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(145deg,hsl(var(--h) 70% 82%),hsl(var(--h) 55% 62%));color:hsl(var(--h) 45% 22%);font-family:var(--f-display);font-weight:700}
+.ph span{font-size:13px}
+.ph .stk{position:absolute;top:8%;right:-18%;transform:rotate(18deg);background:#E0312B;color:#fff;font-style:normal;font-family:var(--f-ui);font-size:9px;font-weight:700;padding:1px 22px;letter-spacing:.03em}
+.ph.big{width:120px}
+.ph.big span{font-size:30px}
+.ph.big .stk{font-size:13px;padding:2px 30px}
+
+/* grid */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.counts{display:flex;flex-wrap:wrap;gap:6px}
+.count{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:3px 9px;border-radius:999px;background:var(--surface-2)}
+.count b{font-family:var(--f-mono);font-weight:500}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none;display:inline-block}
+.s-ok .dot,.count.s-ok .dot{background:var(--ok)}
+.s-warn .dot,.count.s-warn .dot{background:var(--warn)}
+.s-bad .dot,.count.s-bad .dot{background:var(--bad)}
+.s-approved .dot,.count.s-approved .dot{background:transparent;box-shadow:inset 0 0 0 2px var(--ok)}
+.s-live .dot,.count.s-live .dot,.s-resub .dot{background:var(--live)}
+.s-rejected .dot{background:var(--bad);border-radius:2px}
+.gridwrap{overflow-x:auto}
+table.lg{border-collapse:separate;border-spacing:6px;width:100%;min-width:680px;margin:-6px}
+.lg th{font-weight:600;text-align:left;font-size:12.5px;color:var(--muted);padding:0 4px}
+.lg thead th{font-family:var(--f-display);font-size:15px;color:var(--ink)}
+.lg td{vertical-align:top;padding:0}
+.lg .rowh{display:grid;grid-template-columns:36px 1fr;gap:8px;align-items:center;min-width:150px}
+.lg .rowh b{display:block;color:var(--ink);font-size:13px}
+.lg .rowh small{font-weight:400;color:var(--muted)}
+.cell{width:100%;min-height:86px;text-align:left;border:1px solid var(--line);border-radius:9px;background:var(--surface);padding:8px 10px;cursor:pointer;display:grid;gap:5px;align-content:start;transition:border-color .15s,background .15s}
+.cell:hover:not(:disabled){border-color:var(--accent)}
+.cell:disabled{cursor:default}
+.cell-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px}
+.cell-top b{font-weight:600}
+.cell-top small{color:var(--muted);font-size:11.5px}
+.cell-top .tag{border:1px solid currentColor;border-radius:4px;padding:0 4px;font-size:10.5px;color:var(--live)}
+.cell-title{font-size:12.5px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cell.s-bad{background:color-mix(in srgb,var(--bad) 9%,var(--surface));border-color:color-mix(in srgb,var(--bad) 45%,var(--line))}
+.cell.s-warn{background:color-mix(in srgb,var(--warn) 10%,var(--surface));border-color:color-mix(in srgb,var(--warn) 45%,var(--line))}
+.cell.s-rejected{background:color-mix(in srgb,var(--bad) 14%,var(--surface));border-color:var(--bad)}
+.cell.s-live{background:color-mix(in srgb,var(--live) 8%,var(--surface))}
+.cell.s-draft{color:var(--muted)}
+.cell.flash{animation:flash 1.2s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
+
+/* rulebook + log */
+.rules{display:grid;gap:8px;margin:0;padding:0;list-style:none;max-height:420px;overflow:auto}
+.rule{border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:4px}
+.rule header{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.rule .rid{font-family:var(--f-mono);font-size:12px;font-weight:500}
+.pl{font-size:11px;border-radius:4px;padding:0 6px;background:var(--surface-2);color:var(--muted);font-weight:500}
+.rule p{margin:0;font-size:13px}
+.rule small{color:var(--muted);font-size:11.5px}
+.rule.new{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.rule.new .newtag{font-size:10.5px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.log{margin:0;padding:0;list-style:none;display:grid;gap:4px;max-height:360px;overflow:auto;font-size:12.5px}
+.log li{display:grid;grid-template-columns:62px 1fr;gap:8px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.log time{font-family:var(--f-mono);color:var(--muted);font-size:11.5px}
+.log .k-sub span{color:var(--muted)}
+.log .k-warn span{color:var(--warn)}
+.log .k-ok span{color:var(--ok)}
+.log .k-platform span{color:var(--bad);font-weight:500}
+.log .k-human span{color:var(--accent);font-weight:500}
+details.under{border-top:1px solid var(--line);padding-top:10px;font-size:13px}
+details.under summary{cursor:pointer;font-weight:600}
+details.under dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:10px 0 0}
+details.under dt{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+details.under dd{margin:0}
+
+/* sheet */
+.backdrop{position:fixed;inset:0;background:rgba(10,16,22,.42);z-index:10}
+.sheet{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--surface);z-index:11;box-shadow:var(--shadow);display:grid;grid-template-rows:auto 1fr auto;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sheet-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+.sheet-head h2{font-family:var(--f-display);font-size:21px;margin:2px 0 0;text-wrap:balance}
+.sheet-body{overflow:auto;padding:16px 18px;display:grid;gap:18px;align-content:start}
+.sheet-foot{padding:12px 18px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:600;background:var(--surface-2);white-space:nowrap}
+.sec{display:grid;gap:6px}
+.sec .val{font-size:14px}
+.crumb{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.crumb span+span::before{content:"›";margin-right:4px;color:var(--muted)}
+.conf{font-size:12.5px;color:var(--warn)}
+.ttl{font-size:15px;line-height:1.55;background:var(--surface-2);border-radius:8px;padding:10px 12px}
+mark{border-radius:3px;padding:0 2px;color:inherit}
+mark.bad{background:var(--mark-bad);text-decoration:underline wavy var(--bad);text-underline-offset:3px}
+mark.warn{background:var(--mark-warn);text-decoration:underline wavy var(--warn);text-underline-offset:3px}
+.attrs{display:grid;grid-template-columns:minmax(110px,auto) 1fr;gap:4px 12px;margin:0}
+.attrs dt{color:var(--muted)}
+.attrs dd{margin:0}
+.attrs .miss{color:var(--warn);font-weight:500}
+.imgrow{display:flex;gap:12px;align-items:center}
+.issues{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.issue{border:1px solid var(--line);border-left-width:4px;border-radius:8px;padding:10px 12px;display:grid;gap:6px}
+.issue.bad{border-left-color:var(--bad)}
+.issue.warn{border-left-color:var(--warn)}
+.issue header{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px}
+.issue p{margin:0}
+.issue .btn{justify-self:start}
+.reject{border:1px solid var(--bad);border-radius:8px;padding:10px 12px;background:color-mix(in srgb,var(--bad) 8%,var(--surface))}
+.reject p{margin:4px 0 0}
+.okmsg{color:var(--ok);font-weight:500;margin:0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <h1>Lên<span>Sàn</span></h1>
+      <p>Agent đưa catalog của brand mới lên Shopee, TikTok Shop và Lazada</p>
+    </div>
+    <div class="ctx">
+      <span class="chip">Brand: <b>Hạ Vy Botanics</b></span>
+      <span class="chip">6 SKU × 3 sàn</span>
+      <span class="chip">Hạn mở bán <b class="mono">03/10</b></span>
+      <span class="chip note">Bản mô phỏng: brand, dữ liệu và luật đều là ví dụ, agent chưa gọi model thật</span>
+    </div>
+  </header>
+
+  <section class="scen" aria-label="Kịch bản demo">
+    <ol class="steps" id="steps"></ol>
+    <div class="scen-row">
+      <p class="scen-desc" id="scenDesc"></p>
+      <div class="btns">
+        <button class="btn pri" id="runBtn" type="button"></button>
+        <button class="btn" id="resetBtn" type="button">Làm lại từ đầu</button>
+      </div>
+    </div>
+    <div class="notice" id="noticeBox" hidden>
+      <label for="notice">Thông báo của sàn (dán nguyên văn)</label>
+      <textarea id="notice">[TikTok Shop] Cập nhật quy định nội dung sản phẩm: Từ ngày 01/11/2026, tiêu đề sản phẩm không được chứa emoji hoặc ký tự trang trí (ví dụ 【】, ★, 🔥). Sản phẩm vi phạm sẽ bị hạn chế hiển thị cho đến khi được chỉnh sửa.</textarea>
+    </div>
+  </section>
+
+  <div class="main">
+    <div class="col-src">
+      <section class="panel" aria-label="Nguồn và dữ liệu gốc">
+        <div class="eyebrow">Brand gửi</div>
+        <div class="files" id="files"></div>
+        <h2>Dữ liệu gốc <small id="pcount"></small></h2>
+        <ul class="plist" id="plist"></ul>
+      </section>
+    </div>
+
+    <section class="panel" aria-label="Listing theo sàn">
+      <div class="toolbar">
+        <div class="counts" id="counts"></div>
+        <div class="btns">
+          <button class="btn" id="fixAllBtn" type="button"></button>
+          <button class="btn" id="approveAllBtn" type="button"></button>
+        </div>
+      </div>
+      <div class="gridwrap"><table class="lg" id="grid"></table></div>
+    </section>
+
+    <div class="panel" style="gap:16px">
+      <section class="sec" aria-label="Sổ luật">
+        <h2>Sổ luật <small id="rcount"></small></h2>
+        <ul class="rules" id="rules"></ul>
+      </section>
+      <section class="sec" aria-label="Nhật ký agent">
+        <h2>Nhật ký agent</h2>
+        <ul class="log" id="log"></ul>
+      </section>
+      <details class="under">
+        <summary>Khi làm thật, mỗi bước dùng gì</summary>
+        <dl>
+          <dt>Bước 1</dt><dd>GPT-6 Sol đọc PDF, ảnh bao bì và file Excel thành dữ liệu gốc.</dd>
+          <dt>Bước 2</dt><dd>Agents API: 3 subagent song song, mỗi sàn một subagent. GPT-6 Luna ghép sản phẩm vào cây danh mục.</dd>
+          <dt>Bước 3</dt><dd>Kiểm tra theo Sổ luật. Mỗi lỗi trả về câu vi phạm, lý do, bản sửa.</dd>
+          <dt>Bước 4</dt><dd>Người duyệt. Agent không tự đăng khi còn ô vàng hoặc đỏ.</dd>
+          <dt>Bước 5–6</dt><dd>Đọc lý do từ chối và thông báo của sàn, ghi luật mới, quét lại toàn bộ listing.</dd>
+        </dl>
+      </details>
+    </div>
+  </div>
+</div>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<aside class="sheet" id="sheet" hidden aria-modal="true" role="dialog" aria-labelledby="sheetTitle"></aside>
+
+<script>
+const PLATS=[{id:'sp',name:'Shopee'},{id:'tt',name:'TikTok Shop'},{id:'lz',name:'Lazada'}];
+const PNAME=Object.fromEntries(PLATS.map(p=>[p.id,p.name]));
+const REQ={sp:['Thương hiệu','Quy cách','Xuất xứ','Hạn sử dụng'],tt:['Thương hiệu','Quy cách','Số công bố'],lz:['Thương hiệu','Quy cách','Phù hợp với','Số công bố']};
+
+const PRODUCTS=[
+ {id:'P1',name:'Serum Vitamin C 15%',short:'VC',hue:34,size:'30ml',fit:'Da xỉn màu, thâm',cb:'2154/26/CBMP-HCM',hsd:'24 tháng',src:'PDF tr.3 · Excel dòng 2'},
+ {id:'P2',name:'Sữa rửa mặt trà xanh',short:'TX',hue:118,size:'150ml',fit:'Da dầu, mụn',cb:'2155/26/CBMP-HCM',hsd:'36 tháng',src:'PDF tr.5 · Excel dòng 3'},
+ {id:'P3',name:'Kem chống nắng SPF50+ PA++++',short:'CN',hue:50,size:'50ml',fit:null,fitGuess:'Mọi loại da',fitWhy:'câu "phù hợp cả da dầu và da khô" ở PDF tr.6',cb:'2156/26/CBMP-HCM',hsd:'24 tháng',src:'PDF tr.6 · Excel dòng 4',flag:'Thiếu thông tin loại da phù hợp'},
+ {id:'P4',name:'Dầu gội bưởi',short:'BG',hue:352,size:'300ml',fit:'Tóc dầu, dễ gãy rụng',cb:'2157/26/CBMP-HCM',hsd:'36 tháng',src:'PDF tr.8 · Ảnh fanpage #11'},
+ {id:'P5',name:'Son dưỡng dầu dừa',short:'SD',hue:14,size:'4g',conflict:{from:'4g',to:'3,5g'},fit:'Môi khô',cb:'2158/26/CBMP-HCM',hsd:'24 tháng',src:'PDF tr.10 · Excel dòng 6',flag:'PDF ghi 4g, Excel ghi 3,5g'},
+ {id:'P6',name:'Mặt nạ ngủ rau má',short:'RM',hue:96,size:'80g',fit:'Da nhạy cảm',cb:'2159/26/CBMP-HCM',hsd:'24 tháng',src:'PDF tr.12 · Excel dòng 7'}
+];
+const P=Object.fromEntries(PRODUCTS.map(p=>[p.id,p]));
+
+const TITLES={
+ P1:{sp:'Serum Vitamin C 15% Hạ Vy Botanics 30ml làm sáng da, trị dứt điểm nám',tt:'【Chính Hãng】 Serum Vitamin C 15% Hạ Vy 30ml trị dứt điểm nám',lz:'Hạ Vy Botanics Serum Vitamin C 15% 30ml Làm Sáng Da, Trị Dứt Điểm Nám'},
+ P2:{sp:'Sữa rửa mặt trà xanh Hạ Vy Botanics 150ml cho da dầu mụn',tt:'Sữa rửa mặt trà xanh Hạ Vy 150ml – chính hãng như trên Shopee Mall',lz:'Hạ Vy Botanics Sữa Rửa Mặt Trà Xanh 150ml Cho Da Dầu Mụn'},
+ P3:{sp:'Kem chống nắng Hạ Vy Botanics SPF50+ PA++++ 50ml nâng tông nhẹ',tt:'【Chính Hãng】 Kem chống nắng Hạ Vy SPF50+ PA++++ 50ml',lz:'Hạ Vy Botanics Kem Chống Nắng SPF50+ PA++++ 50ml'},
+ P4:{sp:'Dầu gội bưởi Hạ Vy Botanics 300ml kích mọc tóc, chữa rụng tóc',tt:'Dầu gội bưởi Hạ Vy 300ml kích mọc tóc, chữa rụng tóc',lz:'Hạ Vy Botanics Dầu Gội Bưởi 300ml Kích Mọc Tóc, Chữa Rụng Tóc'},
+ P5:{sp:'Son dưỡng dầu dừa Hạ Vy Botanics 4g cho môi khô',tt:'【Chính Hãng】 Son dưỡng dầu dừa Hạ Vy 4g',lz:'Hạ Vy Botanics Son Dưỡng Dầu Dừa 4g'},
+ P6:{sp:'Mặt nạ ngủ rau má Hạ Vy Botanics 80g cho da nhạy cảm',tt:'Mặt nạ ngủ rau má Hạ Vy 80g',lz:'Hạ Vy Botanics Mặt Nạ Ngủ Rau Má 80g'}
+};
+const SAFE={P1:'hỗ trợ làm mờ thâm nám',P4:'hỗ trợ giảm gãy rụng'};
+const CATS={
+ P1:{sp:['Sắc Đẹp','Chăm sóc da mặt','Serum & Tinh chất'],tt:['Làm đẹp & Chăm sóc cá nhân','Chăm sóc da','Tinh chất'],lz:['Sức khỏe & Làm đẹp','Chăm sóc da','Serum & Tinh chất']},
+ P2:{sp:['Sắc Đẹp','Chăm sóc da mặt','Sữa rửa mặt'],tt:['Làm đẹp & Chăm sóc cá nhân','Chăm sóc da','Làm sạch da mặt'],lz:['Sức khỏe & Làm đẹp','Chăm sóc da','Sữa rửa mặt']},
+ P3:{sp:['Sắc Đẹp','Chống nắng','Kem chống nắng mặt'],tt:['Làm đẹp & Chăm sóc cá nhân','Chăm sóc da','Chống nắng'],lz:['Sức khỏe & Làm đẹp','Chăm sóc da','Chống nắng']},
+ P4:{sp:['Sắc Đẹp','Chăm sóc tóc','Dầu gội'],tt:['Làm đẹp & Chăm sóc cá nhân','Chăm sóc tóc','Dầu gội'],lz:['Sức khỏe & Làm đẹp','Chăm sóc tóc','Dầu gội']},
+ P5:{sp:['Sắc Đẹp','Trang điểm môi','Son dưỡng'],tt:['Làm đẹp & Chăm sóc cá nhân','Trang điểm','Môi'],lz:['Sức khỏe & Làm đẹp','Trang điểm','Son dưỡng môi']},
+ P6:{sp:['Sắc Đẹp','Chăm sóc da mặt','Mặt nạ'],tt:['Làm đẹp & Chăm sóc cá nhân','Chăm sóc da','Mặt nạ'],lz:['Sức khỏe & Làm đẹp','Chăm sóc da','Mặt nạ ngủ']}
+};
+const STICKERS={P2:'FREESHIP',P6:'SALE 50%'};
+
+const RULES_BASE=[
+ {id:'R-01',plat:'all',text:'Mỹ phẩm không được tuyên bố công dụng điều trị như "trị dứt điểm", "chữa", "đặc trị".',src:'Nạp sẵn · quy định quảng cáo mỹ phẩm'},
+ {id:'R-02',plat:'tt',text:'Không nhắc tên sàn khác trong tiêu đề và mô tả.',src:'Nạp sẵn · chính sách nội dung TikTok Shop'},
+ {id:'R-03',plat:'all',text:'Điền đủ thuộc tính bắt buộc của từng sàn. Giá trị agent tự suy ra phải có người xác nhận.',src:'Nạp sẵn'},
+ {id:'R-04',plat:'sp',text:'Tiêu đề tối đa 120 ký tự.',src:'Nạp sẵn'},
+ {id:'R-05',plat:'all',text:'Quy cách phải khớp giữa các nguồn catalog trước khi đăng.',src:'Nạp sẵn · quy trình nội bộ'},
+ {id:'R-06',plat:'all',text:'Danh mục có độ tin cậy dưới 80% phải có người xác nhận.',src:'Nạp sẵn · quy trình nội bộ'}
+];
+
+const STEPS=[
+ {name:'Nhận catalog',btn:'Đọc catalog',desc:'Brand gửi 1 file PDF 14 trang, 1 bảng giá Excel và 23 ảnh fanpage. Agent gom lại thành <b>1 bản dữ liệu gốc cho mỗi sản phẩm</b> và chỉ ra chỗ các nguồn mâu thuẫn nhau.'},
+ {name:'Tạo listing 3 sàn',btn:'Tạo listing',desc:'Mỗi sàn một subagent chạy song song: chọn danh mục trong cây của sàn đó, điền thuộc tính bắt buộc, viết tiêu đề theo quy ước riêng.'},
+ {name:'Soát vi phạm',btn:'Soát vi phạm',desc:'Đối chiếu 18 listing với Sổ luật. Mỗi lỗi có <b>câu bị gạch chân, lý do và bản sửa đề xuất</b>.'},
+ {name:'Chuyên viên duyệt',btn:'Bắt đầu duyệt',desc:'Bấm vào ô đỏ hoặc vàng để xem lý do và áp dụng bản sửa. Ô xanh có thể duyệt hàng loạt. Agent không tự đăng khi còn lỗi.'},
+ {name:'Sàn từ chối',btn:'Đăng lên sàn',desc:'Đăng các listing đã duyệt. Lazada từ chối 1 listing. Agent đọc lý do, tự sửa, nộp lại, <b>ghi luật mới vào Sổ luật</b> rồi quét lại các listing khác.'},
+ {name:'Sàn đổi chính sách',btn:'Đọc thông báo',desc:'Dán thông báo mới của sàn vào ô bên dưới. Agent chuyển nó thành luật và quét lại các listing đang bán.'}
+];
+
+const STATUS={
+ draft:{label:'Nháp'},ok:{label:'Sẵn sàng duyệt'},warn:{label:'Cần xem'},bad:{label:'Vi phạm'},
+ approved:{label:'Đã duyệt'},live:{label:'Đang bán'},rejected:{label:'Bị từ chối'},resub:{label:'Đã nộp lại'}
+};
+
+let S, openCell=null, runToken=0;
+function fresh(){
+  return {step:0,read:false,shown:[],L:{},rules:RULES_BASE.map(r=>({...r})),newRules:new Set(),log:[],clock:9*3600+12*60,busy:false,instant:false};
+}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=t=>{const h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60;return [h,m,s].map(x=>String(x).padStart(2,'0')).join(':')};
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function sleep(ms){return S.instant?Promise.resolve():new Promise(r=>setTimeout(r,reduce?Math.min(ms,120):ms))}
+const ruleOn=id=>S.rules.some(r=>r.id===id);
+
+async function say(msg,kind='agent',ms=420){
+  if(!S.instant) await sleep(ms);
+  S.clock+=2+Math.floor(Math.random()*8);
+  S.log.push({t:fmt(S.clock),msg,kind});
+  renderLog();
+}
+
+/* listings */
+function build(pid,plat){
+  const p=P[pid];
+  const all={'Thương hiệu':'Hạ Vy Botanics','Quy cách':p.size,'Xuất xứ':'Việt Nam','Hạn sử dụng':p.hsd,'Số công bố':p.cb,'Phù hợp với':p.fit};
+  const attrs={};REQ[plat].forEach(k=>attrs[k]=all[k]??null);
+  const l={pid,plat,title:TITLES[pid][plat],cat:CATS[pid][plat],catConf:1,catAlt:null,attrs,
+    img:{sticker:plat==='lz'?STICKERS[pid]||null:null,note:'Ảnh #1 từ fanpage'},issues:[],scanned:false,approved:false,live:false,rejected:false,resub:false};
+  if(pid==='P4'&&plat==='sp'){l.catConf=.64;l.catAlt=['Sắc Đẹp','Chăm sóc tóc','Dầu gội trị gàu'];}
+  return l;
+}
+function scan(l){
+  const p=P[l.pid],out=[];
+  const m1=l.title.match(/(trị dứt điểm[^,.;]*|chữa [^,.;]*|đặc trị[^,.;]*)/iu);
+  if(m1) out.push({rule:'R-01',sev:'bad',phrase:m1[0],reason:'Tuyên bố công dụng điều trị. Mỹ phẩm dùng câu này có nguy cơ bị đình chỉ trên cả 3 sàn.',fixLabel:`Thay bằng "${SAFE[l.pid]}"`,fix:{type:'replace',from:m1[0],to:SAFE[l.pid]}});
+  if(l.plat==='tt'){const m2=l.title.match(/\s*–[^–]*(Shopee|Lazada)[^–]*$/iu);
+    if(m2) out.push({rule:'R-02',sev:'bad',phrase:m2[0].trim(),reason:'Nhắc tên Shopee trong listing TikTok Shop. TikTok sẽ đình chỉ sản phẩm.',fixLabel:'Xoá cụm này khỏi tiêu đề',fix:{type:'replace',from:m2[0],to:''}});}
+  for(const k of REQ[l.plat]) if(!l.attrs[k]&&k==='Phù hợp với'&&p.fitGuess)
+    out.push({rule:'R-03',sev:'warn',attr:k,reason:`Catalog không ghi "${k}". Agent suy ra "${p.fitGuess}" từ ${p.fitWhy}.`,fixLabel:`Xác nhận "${p.fitGuess}"`,fix:{type:'attr',key:k,value:p.fitGuess}});
+  if(l.plat==='sp'&&l.title.length>120) out.push({rule:'R-04',sev:'warn',reason:`Tiêu đề dài ${l.title.length} ký tự.`,fixLabel:'Rút gọn',fix:{type:'replace',from:l.title,to:l.title.slice(0,118)}});
+  if(p.conflict&&l.attrs['Quy cách']===p.conflict.from)
+    out.push({rule:'R-05',sev:'warn',phrase:p.conflict.from,attr:'Quy cách',reason:'PDF tr.10 ghi 4g, bảng giá Excel cập nhật 09/2026 ghi 3,5g. Agent đề xuất dùng số trong file mới hơn.',fixLabel:'Dùng 3,5g cho cả 3 sàn',fix:{type:'size',from:p.conflict.from,to:p.conflict.to}});
+  if(l.catConf<.8)
+    out.push({rule:'R-06',sev:'warn',cat:true,reason:`Agent phân vân giữa "${l.cat.at(-1)}" và "${l.catAlt.at(-1)}" (độ tin cậy ${Math.round(l.catConf*100)}%). Catalog không nhắc tới gàu nên nghiêng về "${l.cat.at(-1)}".`,fixLabel:`Xác nhận "${l.cat.at(-1)}"`,fix:{type:'cat'}});
+  if(ruleOn('R-07')&&l.plat==='lz'&&l.img.sticker)
+    out.push({rule:'R-07',sev:'bad',img:true,reason:`Ảnh chính có nhãn "${l.img.sticker}" chèn lên. Lazada đã từ chối một listing vì lỗi này.`,fixLabel:'Đổi sang ảnh #3 từ fanpage (nền trơn)',fix:{type:'img'}});
+  if(ruleOn('R-08')&&l.plat==='tt'){const m=l.title.match(/【[^】]*】\s*|[🔥★]\s*/u);
+    if(m) out.push({rule:'R-08',sev:'warn',phrase:m[0].trim(),reason:'Theo thông báo mới, tiêu đề chứa ký tự trang trí sẽ bị hạn chế hiển thị từ 01/11/2026.',fixLabel:`Bỏ "${m[0].trim()}" khỏi tiêu đề`,fix:{type:'replace',from:m[0],to:''}});}
+  return out;
+}
+function status(l){
+  if(!l.scanned) return 'draft';
+  if(l.rejected) return 'rejected';
+  if(l.resub) return 'resub';
+  if(l.issues.some(i=>i.sev==='bad')) return 'bad';
+  if(l.issues.length) return 'warn';
+  if(l.live) return 'live';
+  if(l.approved) return 'approved';
+  return 'ok';
+}
+function applyFix(l,iss){
+  const f=iss.fix;
+  if(f.type==='replace') l.title=l.title.replace(f.from,f.to).replace(/\s{2,}/g,' ').replace(/\s+,/g,',').trim();
+  if(f.type==='attr') l.attrs[f.key]=f.value;
+  if(f.type==='size'){l.attrs['Quy cách']=f.to;l.title=l.title.replace(f.from,f.to);}
+  if(f.type==='cat') l.catConf=1;
+  if(f.type==='img') l.img={sticker:null,note:'Ảnh #3 từ fanpage, nền trơn'};
+  l.issues=scan(l);
+}
+const allL=()=>Object.values(S.L);
+const key=(pid,plat)=>pid+'|'+plat;
+
+/* rendering */
+function renderSteps(){
+  $('steps').innerHTML=STEPS.map((s,i)=>`<li class="${i<S.step?'done':i===S.step?'cur':''}"><span class="n">${i<S.step?'✓':i+1}</span>${s.name}</li>`).join('');
+  const cur=STEPS[S.step];
+  $('scenDesc').innerHTML=cur?`<b>Bước ${S.step+1}.</b> ${cur.desc}`:'<b>Xong kịch bản.</b> Bấm vào bất kỳ ô nào để xem chi tiết, hoặc làm lại từ đầu để trình bày lần nữa.';
+  const rb=$('runBtn');
+  rb.textContent=cur?`Chạy bước ${S.step+1}: ${cur.btn}`:'Đã chạy hết 6 bước';
+  rb.disabled=!cur||S.busy;
+  $('resetBtn').disabled=S.busy;
+  $('noticeBox').hidden=S.step!==5;
+}
+function renderSources(){
+  const read=S.read;
+  $('files').innerHTML=[
+    ['PDF','Catalog_HaVy_T9-2026.pdf','14 trang'],
+    ['XLSX','BangGia_HaVy_cap-nhat-09-2026.xlsx','6 dòng'],
+    ['JPG','Ảnh fanpage Hạ Vy','23 ảnh']
+  ].map(([e,n,m])=>`<div class="file"><span class="ext">${e}</span><div><b>${n}</b><small class="${read?'read':''}">${m} · ${read?'đã đọc':'chưa đọc'}</small></div></div>`).join('');
+  $('pcount').textContent=S.shown.length?`${S.shown.length} sản phẩm`:'';
+  $('plist').innerHTML=S.shown.length?S.shown.map(id=>{const p=P[id];
+    return `<li><div class="ph" style="--h:${p.hue}"><span>${p.short}</span></div><div><b>${p.name}</b><div class="meta mono">${p.size} · ${p.src}</div>${p.flag?`<span class="flag">⚠ ${p.flag}</span>`:''}</div></li>`}).join('')
+    :'<li style="display:block;background:none;padding:0"><p class="empty">Chưa đọc catalog. Chạy bước 1 để agent đọc 3 nguồn.</p></li>';
+}
+function renderGrid(){
+  const rows=PRODUCTS.map(p=>{
+    const cells=PLATS.map(pl=>{
+      const l=S.L[key(p.id,pl.id)];
+      if(!l) return `<td><button class="cell s-draft" disabled><span class="cell-top"><b>Chưa có listing</b></span><span class="cell-title">Chạy bước 2</span></button></td>`;
+      const st=status(l),n=l.issues.length;
+      return `<td><button class="cell s-${st}" data-k="${key(p.id,pl.id)}" aria-label="${esc(p.name)} trên ${pl.name}: ${STATUS[st].label}">
+        <span class="cell-top"><i class="dot"></i><b>${STATUS[st].label}</b>${n?`<small>${n} vấn đề</small>`:''}${l.live&&(st==='bad'||st==='warn')?'<span class="tag">đang bán</span>':''}</span>
+        <span class="cell-title">${esc(l.title)}</span></button></td>`;
+    }).join('');
+    return `<tr><th scope="row"><div class="rowh"><div class="ph" style="--h:${p.hue}"><span>${p.short}</span></div><div><b>${p.name}</b><small class="mono">${S.L[key(p.id,'sp')]?.attrs['Quy cách']||p.size}</small></div></div></th>${cells}</tr>`;
+  }).join('');
+  $('grid').innerHTML=`<thead><tr><th></th>${PLATS.map(p=>`<th scope="col">${p.name}</th>`).join('')}</tr></thead><tbody>${rows}</tbody>`;
+  const c={bad:0,warn:0,ok:0,approved:0,live:0};
+  allL().forEach(l=>{const st=status(l);if(st==='rejected')c.bad++;else if(st==='resub')c.live++;else if(c[st]!==undefined)c[st]++;});
+  $('counts').innerHTML=[['bad','Vi phạm'],['warn','Cần xem'],['ok','Sẵn sàng duyệt'],['approved','Đã duyệt'],['live','Đang bán']]
+    .map(([k,t])=>`<span class="count s-${k}"><i class="dot"></i>${t} <b>${c[k]}</b></span>`).join('');
+  const fixable=allL().filter(l=>!l.rejected&&l.issues.length).length;
+  const fb=$('fixAllBtn');fb.textContent=`Áp dụng mọi đề xuất (${fixable})`;fb.disabled=S.busy||S.step<3||!fixable;
+  const ab=$('approveAllBtn');ab.textContent=`Duyệt tất cả ô xanh (${c.ok})`;ab.disabled=S.busy||S.step<3||!c.ok;
+}
+function renderRules(){
+  $('rcount').textContent=`${S.rules.length} luật · luật mẫu để minh họa`;
+  $('rules').innerHTML=[...S.rules].reverse().map(r=>`<li class="rule ${S.newRules.has(r.id)?'new':''}"><header><span class="rid">${r.id}</span><span class="pl">${r.plat==='all'?'Cả 3 sàn':PNAME[r.plat]}</span>${S.newRules.has(r.id)?'<span class="newtag">Mới học</span>':''}</header><p>${esc(r.text)}</p><small>${esc(r.src)}</small></li>`).join('');
+}
+function renderLog(){
+  const el=$('log');
+  el.innerHTML=S.log.map(e=>`<li class="k-${e.kind}"><time>${e.t}</time><span>${esc(e.msg)}</span></li>`).join('')||'<li style="display:block;border:0"><p class="empty">Chưa có hoạt động.</p></li>';
+  el.scrollTop=el.scrollHeight;
+}
+function renderAll(){renderSteps();renderSources();renderGrid();renderRules();renderLog();if(openCell)renderSheet();}
+function flash(k){if(S.instant)return;const b=document.querySelector(`.cell[data-k="${k}"]`);if(b){b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash');}}
+
+/* sheet */
+function hl(title,issues){
+  let h=esc(title);
+  issues.filter(i=>i.phrase&&title.includes(i.phrase)).forEach(i=>{const e=esc(i.phrase);h=h.split(e).join(`<mark class="${i.sev}">${e}</mark>`);});
+  return h;
+}
+function renderSheet(){
+  const l=S.L[openCell];if(!l){closeSheet();return;}
+  const p=P[l.pid],st=status(l);
+  const iss=l.issues;
+  const catIssue=iss.find(i=>i.cat);
+  const attrIssue=Object.fromEntries(iss.filter(i=>i.attr).map(i=>[i.attr,i]));
+  $('sheet').innerHTML=`
+  <div class="sheet-head">
+    <div><div class="eyebrow">${PNAME[l.plat]} · ${l.pid}</div><h2 id="sheetTitle">${esc(p.name)}</h2></div>
+    <div class="btns" style="align-items:center"><span class="pill s-${st}"><i class="dot"></i>${STATUS[st].label}</span><button class="btn" type="button" data-act="close" aria-label="Đóng">Đóng</button></div>
+  </div>
+  <div class="sheet-body">
+    ${l.rejected?`<div class="reject"><b>Lazada từ chối listing này</b><p class="mono" style="font-size:12.5px">Ảnh chính chứa văn bản hoặc nhãn khuyến mãi. Vui lòng dùng ảnh không chèn chữ. (IMG_TEXT_OVERLAY · phản hồi mô phỏng)</p></div>`:''}
+    <div class="sec"><div class="eyebrow">Danh mục trên ${PNAME[l.plat]}</div>
+      <div class="val crumb">${l.cat.map(c=>`<span>${esc(c)}</span>`).join('')}</div>
+      ${catIssue?`<div class="conf">Độ tin cậy ${Math.round(l.catConf*100)}% · phương án khác: ${esc(l.catAlt.join(' › '))}</div>`:''}
+    </div>
+    <div class="sec"><div class="eyebrow">Tiêu đề${l.plat==='sp'?` <span class="mono">· ${l.title.length}/120 ký tự</span>`:''}</div>
+      <div class="ttl">${hl(l.title,iss)}</div>
+    </div>
+    <div class="sec"><div class="eyebrow">Thuộc tính bắt buộc của ${PNAME[l.plat]}</div>
+      <dl class="attrs">${REQ[l.plat].map(k=>`<dt>${k}</dt><dd>${l.attrs[k]?(attrIssue[k]?`<mark class="warn">${esc(l.attrs[k])}</mark>`:esc(l.attrs[k])):`<span class="miss">Chưa có${attrIssue[k]?` · agent đề xuất "${esc(attrIssue[k].fix.value)}"`:''}</span>`}</dd>`).join('')}</dl>
+    </div>
+    <div class="sec"><div class="eyebrow">Ảnh chính</div>
+      <div class="imgrow"><div class="ph big" style="--h:${p.hue}"><span>${p.short}</span>${l.img.sticker?`<em class="stk">${esc(l.img.sticker)}</em>`:''}</div>
+      <div><div>${esc(l.img.note)}</div><small style="color:var(--muted)">${l.img.sticker?`Có nhãn "${esc(l.img.sticker)}" do brand chèn cho fanpage`:'Nền trơn, không chèn chữ'}</small></div></div>
+    </div>
+    <div class="sec"><div class="eyebrow">Vấn đề (${iss.length})</div>
+      ${iss.length?`<ul class="issues">${iss.map((i,n)=>`<li class="issue ${i.sev}"><header><span class="rid mono">${i.rule}</span><b>${i.sev==='bad'?'Vi phạm':'Cần xem'}</b></header><p>${esc(i.reason)}</p><button class="btn" type="button" data-act="fix" data-i="${n}" ${S.busy?'disabled':''}>${esc(i.fixLabel)}</button></li>`).join('')}</ul>`
+      :`<p class="okmsg">Không có vấn đề nào theo ${S.rules.length} luật hiện có.</p>`}
+    </div>
+  </div>
+  <div class="sheet-foot">
+    ${st==='ok'?`<button class="btn pri" type="button" data-act="approve">Duyệt listing này</button>`:''}
+    ${st==='approved'?'<span class="pill s-approved"><i class="dot"></i>Đã duyệt, chờ đăng</span>':''}
+    ${st==='live'?`<span class="pill s-live"><i class="dot"></i>Đang bán trên ${PNAME[l.plat]}</span>`:''}
+    ${(st==='bad'||st==='warn')?'<span style="color:var(--muted);font-size:13px">Xử lý hết vấn đề để duyệt</span>':''}
+  </div>`;
+}
+function openSheet(k){openCell=k;renderSheet();$('sheet').hidden=false;$('backdrop').hidden=false;$('sheet').querySelector('[data-act="close"]')?.focus();}
+function closeSheet(){const k=openCell;openCell=null;$('sheet').hidden=true;$('backdrop').hidden=true;if(k)document.querySelector(`.cell[data-k="${k}"]`)?.focus();}
+
+/* human actions */
+function humanFix(k,i){
+  const l=S.L[k],iss=l.issues[i];if(!iss)return;
+  applyFix(l,iss);
+  S.clock+=5;S.log.push({t:fmt(S.clock),msg:`Chuyên viên áp dụng sửa ${iss.rule} · ${P[l.pid].name} (${PNAME[l.plat]})${l.live&&!l.issues.length?'. Đã đẩy bản cập nhật lên sàn.':''}`,kind:'human'});
+  if(iss.fix.type==='size'){ // same conflict on other platforms: propagate once confirmed
+    PLATS.forEach(pl=>{const o=S.L[key(l.pid,pl.id)];if(o&&o!==l){const j=o.issues.find(x=>x.rule==='R-05');if(j)applyFix(o,j);}});
+    S.log.push({t:fmt(S.clock),msg:`Áp dụng quy cách 3,5g cho cả 3 sàn.`,kind:'agent'});
+  }
+  renderAll();flash(k);
+}
+function approve(k){const l=S.L[k];if(status(l)!=='ok')return;l.approved=true;S.clock+=3;S.log.push({t:fmt(S.clock),msg:`Chuyên viên duyệt ${P[l.pid].name} (${PNAME[l.plat]}).`,kind:'human'});renderAll();}
+function approveAll(){const ls=allL().filter(l=>status(l)==='ok');ls.forEach(l=>l.approved=true);S.clock+=4;S.log.push({t:fmt(S.clock),msg:`Chuyên viên duyệt hàng loạt ${ls.length} listing không có vấn đề.`,kind:'human'});renderAll();}
+function fixAll(){
+  let n=0;allL().forEach(l=>{if(l.rejected)return;let g=0;while(l.issues.length&&g++<6){applyFix(l,l.issues[0]);n++;}});
+  S.clock+=6;S.log.push({t:fmt(S.clock),msg:`Chuyên viên chấp nhận ${n} bản sửa đề xuất.`,kind:'human'});renderAll();
+}
+
+/* scenario steps */
+const RUN=[
+ async function(){
+   await say('Nhận 3 nguồn từ brand Hạ Vy Botanics: 1 PDF, 1 file Excel, 23 ảnh fanpage.');
+   await say('Đọc Catalog_HaVy_T9-2026.pdf: 14 trang, có bảng thành phần và ảnh chụp bao bì.');
+   S.read=true;renderSources();
+   for(const p of PRODUCTS){await say(`Tìm thấy ${p.name} · ${p.size} · ${p.src}`,'sub',300);S.shown.push(p.id);renderSources();}
+   await say('Đối chiếu với bảng giá Excel: Son dưỡng dầu dừa lệch quy cách (PDF ghi 4g, Excel ghi 3,5g).','warn');
+   await say('Kem chống nắng: catalog không ghi loại da phù hợp. Agent sẽ suy ra từ mô tả và đánh dấu để người xác nhận.','warn');
+   await say('Xong: 6 sản phẩm trong dữ liệu gốc, 2 điểm cần xác nhận.','ok');
+ },
+ async function(){
+   await say('Tạo 3 subagent chạy song song, mỗi sàn một subagent.');
+   for(const pl of PLATS){
+     await say(`[${pl.name}] Ghép 6 sản phẩm vào cây danh mục, điền ${REQ[pl.id].length} thuộc tính bắt buộc, viết tiêu đề theo quy ước của sàn.`,'sub',380);
+     for(const p of PRODUCTS){S.L[key(p.id,pl.id)]=build(p.id,pl.id);}
+     renderGrid();
+   }
+   await say('[Shopee] Dầu gội bưởi: phân vân giữa "Dầu gội" và "Dầu gội trị gàu" (độ tin cậy 64%).','warn');
+   await say('[Lazada] Kem chống nắng thiếu thuộc tính bắt buộc "Phù hợp với".','warn');
+   await say('Xong: 18 listing nháp.','ok');
+ },
+ async function(){
+   await say(`Soát 18 listing với ${S.rules.length} luật trong Sổ luật.`);
+   for(const pl of PLATS){await sleep(300);PRODUCTS.forEach(p=>{const l=S.L[key(p.id,pl.id)];l.scanned=true;l.issues=scan(l);});renderGrid();}
+   const c=s=>allL().filter(l=>status(l)===s).length;
+   await say('Serum Vitamin C: "trị dứt điểm nám" là tuyên bố điều trị, lỗi trên cả 3 sàn.','warn',300);
+   await say('Dầu gội bưởi: "chữa rụng tóc" là tuyên bố điều trị, lỗi trên cả 3 sàn.','warn',300);
+   await say('TikTok Shop · Sữa rửa mặt trà xanh: tiêu đề nhắc tên Shopee Mall.','warn',300);
+   await say(`Kết quả: ${c('bad')} vi phạm, ${c('warn')} cần xem, ${c('ok')} sẵn sàng duyệt.`,'ok');
+ },
+ async function(){
+   await say('Chờ chuyên viên duyệt. Bấm vào ô đỏ hoặc vàng để xem lý do và áp dụng bản sửa.','human',200);
+ },
+ async function(){
+   const pend=allL().filter(l=>status(l)==='ok');
+   if(pend.length){pend.forEach(l=>l.approved=true);await say(`Chuyên viên duyệt nốt ${pend.length} listing không có vấn đề.`,'human',250);renderGrid();}
+   const pub=allL().filter(l=>status(l)==='approved');
+   await say(`Đăng ${pub.length} listing đã duyệt lên 3 sàn.`);
+   pub.forEach(l=>{if(l.pid==='P6'&&l.plat==='lz')l.rejected=true;else l.live=true;});
+   renderGrid();
+   const left=allL().filter(l=>['bad','warn'].includes(status(l))).length;
+   if(left) await say(`${left} listing còn vấn đề chưa xử lý, chưa được đăng.`,'sub',250);
+   const lz=S.L[key('P6','lz')];
+   if(!lz.rejected){lz.issues=[];lz.approved=true;lz.rejected=true;renderGrid();}
+   await say('Lazada từ chối "Mặt nạ ngủ rau má": ảnh chính chứa văn bản hoặc nhãn khuyến mãi (IMG_TEXT_OVERLAY).','platform',900);
+   flash(key('P6','lz'));
+   await say('Đọc lý do từ chối. Nguyên nhân: ảnh chính có nhãn "SALE 50%" do brand chèn khi đăng fanpage.',undefined,800);
+   S.rules.push({id:'R-07',plat:'lz',text:'Ảnh chính không được chèn chữ hoặc nhãn khuyến mãi (SALE, FREESHIP…).',src:`Học từ lần Lazada từ chối Mặt nạ ngủ rau má · ${fmt(S.clock)}`});
+   S.newRules.add('R-07');renderRules();
+   await say('Ghi luật mới R-07 vào Sổ luật: Lazada không nhận ảnh chính có chữ khuyến mãi.','ok');
+   lz.img={sticker:null,note:'Ảnh #3 từ fanpage, nền trơn'};lz.rejected=false;lz.resub=true;renderGrid();if(openCell)renderSheet();
+   await say('Đổi sang ảnh #3 từ fanpage (nền trơn) và nộp lại lên Lazada.');
+   await sleep(900);lz.resub=false;lz.live=true;lz.issues=scan(lz);renderGrid();flash(key('P6','lz'));
+   await say('Lazada duyệt lại "Mặt nạ ngủ rau má". Đang bán.','platform',200);
+   await say('Quét lại 18 listing với luật R-07.',undefined,600);
+   allL().forEach(l=>{if(l.scanned)l.issues=scan(l);});renderGrid();
+   flash(key('P2','lz'));
+   await say('Tìm thấy thêm 1 listing cùng lỗi: Sữa rửa mặt trà xanh trên Lazada có nhãn "FREESHIP". Đã soạn bản sửa, chờ duyệt trước khi Lazada phát hiện.','warn');
+ },
+ async function(){
+   await say('Đọc thông báo TikTok Shop vừa dán vào.');
+   await say('Trích ra 1 thay đổi: từ 01/11/2026 tiêu đề không được chứa emoji hoặc ký tự trang trí. Áp dụng cho TikTok Shop.',undefined,700);
+   S.rules.push({id:'R-08',plat:'tt',text:'Từ 01/11/2026, tiêu đề không chứa emoji hoặc ký tự trang trí như 【】, ★, 🔥.',src:`Học từ thông báo TikTok Shop dán vào lúc ${fmt(S.clock)}`});
+   S.newRules.add('R-08');renderRules();
+   await say('Ghi luật mới R-08 vào Sổ luật.','ok');
+   allL().forEach(l=>{if(l.scanned)l.issues=scan(l);});renderGrid();
+   const hit=allL().filter(l=>l.issues.some(i=>i.rule==='R-08'));
+   hit.forEach(l=>flash(key(l.pid,l.plat)));
+   await say(`Quét lại: ${hit.length} listing TikTok Shop có "【Chính Hãng】" trong tiêu đề (${hit.map(l=>P[l.pid].name).join(', ')}). Đã soạn bản sửa, cần duyệt trước 01/11.`,'warn');
+ }
+];
+
+async function runStep(){
+  if(S.busy||S.step>=STEPS.length)return;
+  const tok=runToken;S.busy=true;renderSteps();renderGrid();
+  await RUN[S.step]();
+  if(tok!==runToken)return;
+  S.step++;S.busy=false;renderAll();
+}
+async function reset(toStep=0){
+  runToken++;S=fresh();
+  if(toStep){S.instant=true;for(let i=0;i<toStep;i++){await RUN[i]();S.step++;}S.instant=false;}
+  closeSheet();renderAll();
+}
+
+/* events */
+$('runBtn').addEventListener('click',()=>runStep());
+$('resetBtn').addEventListener('click',()=>reset(0));
+$('approveAllBtn').addEventListener('click',approveAll);
+$('fixAllBtn').addEventListener('click',fixAll);
+$('grid').addEventListener('click',e=>{const b=e.target.closest('.cell[data-k]');if(b)openSheet(b.dataset.k);});
+$('backdrop').addEventListener('click',closeSheet);
+$('sheet').addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  if(b.dataset.act==='close')closeSheet();
+  if(b.dataset.act==='fix')humanFix(openCell,+b.dataset.i);
+  if(b.dataset.act==='approve')approve(openCell);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&openCell)closeSheet();});
+
+/* open in a working state: first 3 steps already run */
+S=fresh();reset(3);
+</script>
