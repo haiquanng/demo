@@ -386,7 +386,7 @@ function Lanes({ s, select }: { s: State; select(k: string): void }) {
                 )}
               </span>
             </header>
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1 2xl:grid-cols-2">
+            <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(175px,1fr))]">
               {keys.map((k) => (
                 <PhoneCard key={k} l={s.items[k]} product={s.products.find((p) => p.id === s.items[k].productId)} selected={s.selected === k} onSelect={() => select(k)} />
               ))}
@@ -651,7 +651,7 @@ export default function LaunchStudio() {
   });
 
   return (
-    <div className="grid gap-5 pb-24">
+    <div className="grid gap-5 pb-24 *:min-w-0">
       {s.phase === "idle" ? (
         <DropZone onFiles={(f) => void start(f)} onSample={() => void startSample()} onCache={() => void startCache()} />
       ) : (
@@ -684,7 +684,7 @@ export default function LaunchStudio() {
       )}
 
       <Sheet open={panel === "listing" && !!cur} onOpenChange={(o) => !o && setPanel(null)}>
-        <SheetContent side="right" className="w-full gap-0 overflow-y-auto p-0 data-[side=right]:sm:max-w-[560px]">
+        <SheetContent side="right" className="gap-0 overflow-y-auto p-0 data-[side=right]:w-full data-[side=right]:sm:max-w-[560px]">
           {cur && curProduct && (
             <>
               <div className="sticky top-0 z-10 grid gap-3 border-b border-line bg-surface/95 px-5 pb-0 pt-5 backdrop-blur">
@@ -699,12 +699,12 @@ export default function LaunchStudio() {
                 <Tabs value={tab} onValueChange={setTab}>
                   <TabsList variant="line" className="h-9">
                     <TabsTrigger value="decision">Quyết định{cur.issues.length ? ` · ${cur.issues.length}` : ""}</TabsTrigger>
-                    <TabsTrigger value="ads">Quảng cáo &amp; AI Search</TabsTrigger>
+                    <TabsTrigger value="ads">Quảng cáo &amp; AI agent</TabsTrigger>
                   </TabsList>
                 </Tabs>
               </div>
-              <div className="p-5">
-                <Tabs value={tab}>
+              <div className="min-w-0 p-5">
+                <Tabs value={tab} className="min-w-0">
                   <TabsContent value="decision"><DecisionBody s={s} dispatch={dispatch} /></TabsContent>
                   <TabsContent value="ads">
                     <AdsTab
@@ -723,7 +723,7 @@ export default function LaunchStudio() {
       </Sheet>
 
       <Sheet open={panel === "rules"} onOpenChange={(o) => !o && setPanel(null)}>
-        <SheetContent side="right" className="w-full gap-6 overflow-y-auto p-5 data-[side=right]:sm:max-w-[520px]">
+        <SheetContent side="right" className="gap-6 overflow-y-auto p-5 data-[side=right]:w-full data-[side=right]:sm:max-w-[520px]">
           <div className="pr-8">
             <SheetTitle className="font-display text-[20px]">Sổ luật &amp; phản hồi từ sàn</SheetTitle>
             <SheetDescription className="text-[13px]">Agent học thêm luật mỗi khi sàn từ chối hoặc khi chuyên viên sửa một đề xuất.</SheetDescription>

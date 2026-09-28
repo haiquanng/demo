@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useRef } from "react";
+import { useCallback, useEffect, useReducer, useRef } from "react";
 import * as XLSX from "xlsx";
 import { toast as sonner } from "sonner";
 import { PLATFORMS, RULES_BASE, type Issue, type Listing, type PlatId, type Product, type Rule } from "../../api/_specs";
@@ -273,8 +273,31 @@ export const SAMPLE_NOTICE = (cacheLearn as Learned).notice ?? "";
 
 /* ---------- hook ---------- */
 
+/* Lưu phiên review vào sessionStorage để tải lại trang không mất kết quả agent. */
+const SAVE_KEY = "lensan:launch:v1";
+function restore(): State {
+  try {
+    const raw = sessionStorage.getItem(SAVE_KEY);
+    if (!raw) return blank();
+    const saved = JSON.parse(raw) as State;
+    if (saved.phase !== "review") return blank();
+    const ads = Object.fromEntries(Object.entries(saved.ads ?? {}).filter(([, v]) => v !== "loading"));
+    return { ...blank(), ...saved, ads, learning: false, toasts: [], pendingRule: null };
+  } catch {
+    return blank();
+  }
+}
+
 export function useLaunch() {
-  const [s, dispatch] = useReducer(reducer, undefined, blank);
+  const [s, dispatch] = useReducer(reducer, undefined, restore);
+  useEffect(() => {
+    try {
+      if (s.phase === "review") sessionStorage.setItem(SAVE_KEY, JSON.stringify({ ...s, toasts: [] }));
+      else if (s.phase === "idle") sessionStorage.removeItem(SAVE_KEY);
+    } catch {
+      /* trình duyệt chặn lưu trữ thì bỏ qua */
+    }
+  }, [s]);
   const run = useRef(0);
 
   const toast = useCallback((text: string, tone: Toast["tone"] = "info") => {

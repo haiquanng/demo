@@ -1,0 +1,11 @@
+{
+  "name": "lensan-voice-call",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env server.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.21.3"
+  }
+}

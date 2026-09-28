@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gọi thử AI</title>
+<style>
+  :root { --ink: #15202b; --soft: #586573; --line: #d3dae2; --bg: #eef1f4; --card: #fff; --brand: #2b4fc4; --ok: #1d8752; --warn: #a96b0c; --bad: #c0392f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+  main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 48px; display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+  @media (max-width: 820px) { main { grid-template-columns: minmax(0, 1fr); } }
+  header { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
+  h1 { margin: 0; font-size: 24px; }
+  h2 { margin: 0; font-size: 15px; }
+  .muted { color: var(--soft); font-size: 13px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+  label { font-size: 13px; color: var(--soft); display: grid; gap: 4px; }
+  input, textarea { font: inherit; color: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; width: 100%; }
+  textarea { min-height: 96px; resize: vertical; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font: inherit; font-size: 12.5px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+  .chip:hover, .chip.on { border-color: var(--brand); color: var(--brand); }
+  .btn { font: inherit; font-weight: 600; padding: 11px 16px; border: 0; border-radius: 10px; background: var(--brand); color: #fff; cursor: pointer; }
+  .btn.ghost { background: #fff; color: var(--bad); border: 1px solid var(--bad); }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .steps { display: flex; gap: 6px; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+  .steps li { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; background: #e6eaef; color: var(--soft); }
+  .steps li.done { background: #e3f3ea; color: var(--ok); }
+  .steps li.now { background: var(--brand); color: #fff; }
+  .steps li.fail { background: #f8dcd9; color: var(--bad); }
+  .explain { font-size: 13.5px; border-radius: 10px; padding: 10px 12px; background: #f3f5f8; }
+  .explain.bad { background: #fbe9e7; color: #8f2a22; }
+  .explain.ok { background: #e3f3ea; color: #145c38; }
+  .lines { display: grid; gap: 8px; max-height: 360px; overflow: auto; }
+  .line { max-width: 88%; padding: 8px 12px; border-radius: 14px; font-size: 14px; }
+  .line.ai { background: #e8edfb; justify-self: start; border-bottom-left-radius: 4px; }
+  .line.me { background: var(--ink); color: #fff; justify-self: end; border-bottom-right-radius: 4px; }
+  .line b { display: block; font-size: 11px; opacity: .7; font-weight: 600; }
+  .outcome { background: #e3f3ea; color: var(--ok); border-radius: 10px; padding: 10px 12px; font-size: 14px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+  th { color: var(--soft); font-weight: 600; }
+  .tag { font-size: 12px; font-weight: 600; }
+  .tag.ok { color: var(--ok); } .tag.bad { color: var(--bad); } .tag.warn { color: var(--warn); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Gọi thử AI</h1>
+    <span class="muted">Số gọi đi 0868 661 230 · người nghe sẽ thấy một số lạ (thường là 024…)</span>
+  </header>
+
+  <section class="card" aria-label="Thiết lập cuộc gọi">
+    <label>Số điện thoại
+      <input id="to" type="tel" placeholder="0332300304" autocomplete="tel" />
+    </label>
+    <div class="chips" id="recent" aria-label="Số đã gọi"></div>
+    <label>Kịch bản cho AI
+      <textarea id="purpose"></textarea>
+    </label>
+    <div class="chips" id="presets" aria-label="Kịch bản mẫu"></div>
+    <div class="row">
+      <button class="btn" id="callBtn" type="button">Gọi</button>
+      <button class="btn ghost" id="hangBtn" type="button" hidden>Cúp máy</button>
+    </div>
+    <p class="muted" id="err" role="alert"></p>
+  </section>
+
+  <section class="card" aria-label="Cuộc gọi hiện tại">
+    <h2>Cuộc gọi hiện tại</h2>
+    <ol class="steps" id="steps"></ol>
+    <p class="explain" id="explain">Chưa gọi. Chọn số và kịch bản rồi bấm Gọi.</p>
+    <div class="lines" id="lines"></div>
+    <div class="outcome" id="outcome" hidden></div>
+  </section>
+
+  <section class="card" style="grid-column: 1 / -1" aria-label="Lịch sử">
+    <h2>Lịch sử cuộc gọi</h2>
+    <div style="overflow-x:auto"><table><thead><tr><th>Giờ</th><th>Số</th><th>Kết quả</th><th>Thời lượng</th><th>Lời thoại</th><th>Ghi nhận</th></tr></thead><tbody id="hist"></tbody></table></div>
+  </section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const PRESETS = {
+  "Nhắc lịch khám": "Nhắc lịch hẹn khám răng lúc 15 giờ chiều mai tại Nha khoa Minh An. Hỏi người nghe có đến được không, nếu không thì muốn dời sang giờ nào.",
+  "Xác nhận đơn COD": "Xác nhận đơn hàng thanh toán khi nhận: 1 serum Vitamin C Hạ Vy Botanics 30ml, giá 390.000đ, giao trong 2 ngày. Hỏi người nghe xác nhận đơn, địa chỉ nhận hàng có đúng không, hay muốn hủy.",
+  "Hỏi thăm sau mua": "Hỏi thăm người nghe đã dùng sữa rửa mặt trà xanh Hạ Vy Botanics mua tuần trước thấy thế nào, có cần hướng dẫn cách dùng không. Không chào bán thêm sản phẩm khác.",
+};
+const STATUS = {
+  queued: { step: 0, text: "Twilio đã nhận lệnh gọi.", tone: "" },
+  initiated: { step: 0, text: "Twilio đang quay số.", tone: "" },
+  ringing: { step: 1, text: "Đang đổ chuông. Người nghe thấy số lạ (thường là 024…), nhắc họ bắt máy.", tone: "" },
+  "in-progress": { step: 2, text: "Đã bắt máy. AI đang nói chuyện.", tone: "ok" },
+  completed: { step: 3, text: "Cuộc gọi đã kết thúc.", tone: "ok" },
+  busy: { step: -1, text: "Báo bận. Người nghe từ chối, hoặc nhà mạng chặn cuộc gọi quốc tế mang số trong nước (thường gặp với MobiFone).", tone: "bad" },
+  "no-answer": { step: -1, text: "Không ai bắt máy trong 40 giây. Nếu máy không hề đổ chuông thì nhiều khả năng nhà mạng đã chặn.", tone: "bad" },
+  failed: { step: -1, text: "Không gọi được. Kiểm tra số điện thoại hoặc quyền gọi trong Twilio.", tone: "bad" },
+  canceled: { step: -1, text: "Đã hủy.", tone: "bad" },
+};
+const STEPS = ["Quay số", "Đổ chuông", "Đang nói chuyện", "Kết thúc"];
+const DONE = ["completed", "busy", "no-answer", "failed", "canceled"];
+const LABEL = { xac_nhan: "Xác nhận", doi_lich: "Dời lịch", huy: "Hủy", chua_ro: "Chưa rõ" };
+
+let recent = [];
+try { recent = JSON.parse(localStorage.getItem("recent-numbers") || "[]"); } catch {}
+if (!recent.length) recent = ["0332300304"];
+function renderRecent() {
+  $("recent").innerHTML = recent.map((n) => `<button type="button" class="chip" data-n="${n}">${n}</button>`).join("");
+}
+$("recent").addEventListener("click", (e) => { const n = e.target.dataset?.n; if (n) $("to").value = n; });
+$("presets").innerHTML = Object.keys(PRESETS).map((k, i) => `<button type="button" class="chip${i === 0 ? " on" : ""}" data-p="${k}">${k}</button>`).join("");
+$("presets").addEventListener("click", (e) => {
+  const k = e.target.dataset?.p; if (!k) return;
+  $("purpose").value = PRESETS[k];
+  [...$("presets").children].forEach((c) => c.classList.toggle("on", c.dataset.p === k));
+});
+$("purpose").value = PRESETS["Nhắc lịch khám"];
+$("to").value = recent[0];
+renderRecent();
+
+function renderSteps(status) {
+  const s = STATUS[status] ?? { step: 0, text: status, tone: "" };
+  $("steps").innerHTML = STEPS.map((t, i) => {
+    let cls = "";
+    if (s.step === -1) cls = i === 0 ? "done" : i === 1 ? "fail" : "";
+    else cls = i < s.step ? "done" : i === s.step ? (status === "completed" ? "done" : "now") : "";
+    return `<li class="${cls}">${t}</li>`;
+  }).join("");
+  $("explain").textContent = s.text;
+  $("explain").className = "explain " + s.tone;
+}
+
+let current = null, timer = null;
+async function poll() {
+  if (!current) return;
+  const c = await (await fetch("/calls/" + current)).json();
+  renderSteps(c.status);
+  $("lines").innerHTML = c.transcript.map((t) => `<div class="line ${t.who === "AI" ? "ai" : "me"}"><b>${t.who}</b>${t.text.replace(/</g, "&lt;")}</div>`).join("");
+  $("lines").scrollTop = $("lines").scrollHeight;
+  if (c.outcome) {
+    $("outcome").hidden = false;
+    $("outcome").textContent = `Ghi nhận: ${LABEL[c.outcome.trang_thai] || c.outcome.trang_thai}${c.outcome.thoi_gian_moi ? " · " + c.outcome.thoi_gian_moi : ""}${c.outcome.ghi_chu ? " · " + c.outcome.ghi_chu : ""}`;
+  }
+  const done = DONE.includes(c.status);
+  $("hangBtn").hidden = done;
+  $("callBtn").disabled = !done;
+  if (done) { clearInterval(timer); loadHistory(); }
+}
+
+async function loadHistory() {
+  const list = await (await fetch("/calls")).json();
+  $("hist").innerHTML = list.map((c) => {
+    const tone = c.status === "completed" ? "ok" : DONE.includes(c.status) ? "bad" : "warn";
+    const time = c.startedAt ? new Date(c.startedAt).toLocaleTimeString("vi-VN") : "";
+    return `<tr><td>${time}</td><td>${c.to}</td><td><span class="tag ${tone}">${c.status}</span></td><td>${c.duration ?? "–"}${c.duration != null ? " giây" : ""}</td><td>${c.lines} câu</td><td>${c.outcome ? LABEL[c.outcome.trang_thai] || c.outcome.trang_thai : "–"}</td></tr>`;
+  }).join("") || `<tr><td colspan="6" class="muted">Chưa có cuộc gọi nào.</td></tr>`;
+  // Tự theo dõi cuộc gọi đang diễn ra dù được bắt đầu từ nơi khác.
+  const live = list.find((c) => !DONE.includes(c.status));
+  if (live && live.sid !== current) {
+    current = live.sid;
+    $("to").value = live.to.replace(/^\+84/, "0");
+    $("lines").innerHTML = "";
+    $("outcome").hidden = true;
+    clearInterval(timer);
+    timer = setInterval(poll, 1000);
+    poll();
+  }
+}
+setInterval(() => { if (!current || $("callBtn").disabled === false) loadHistory(); }, 3000);
+
+$("callBtn").addEventListener("click", async () => {
+  const to = $("to").value.trim();
+  $("err").textContent = "";
+  $("callBtn").disabled = true;
+  $("lines").innerHTML = "";
+  $("outcome").hidden = true;
+  renderSteps("queued");
+  const res = await fetch("/call", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ to, purpose: $("purpose").value }) });
+  const data = await res.json();
+  if (!res.ok) {
+    $("err").textContent = data.error;
+    $("explain").textContent = "Không gọi được, xem lỗi bên trái.";
+    $("explain").className = "explain bad";
+    $("callBtn").disabled = false;
+    return;
+  }
+  recent = [to, ...recent.filter((n) => n !== to)].slice(0, 6);
+  try { localStorage.setItem("recent-numbers", JSON.stringify(recent)); } catch {}
+  renderRecent();
+  current = data.sid;
+  $("hangBtn").hidden = false;
+  clearInterval(timer);
+  timer = setInterval(poll, 1000);
+  poll();
+});
+$("hangBtn").addEventListener("click", async () => { if (current) await fetch("/hangup/" + current, { method: "POST" }); });
+
+renderSteps("queued");
+$("explain").textContent = "Chưa gọi. Chọn số và kịch bản rồi bấm Gọi.";
+$("explain").className = "explain";
+$("steps").innerHTML = STEPS.map((t) => `<li>${t}</li>`).join("");
+loadHistory();
+</script>
+</body>
+</html>

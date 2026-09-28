@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, Check, Loader2, MessageSquareText, RefreshCw, Search, ShieldCheck, Sparkles } from "lucide-react";
+import { AlertTriangle, ArrowRight, Bot, Check, Loader2, MessageSquareText, RefreshCw, Search, ShieldCheck, Sparkles } from "lucide-react";
 import { PLATFORMS, type PlatId } from "../../api/_specs";
 import { PNAME, keyOf, type AdsKit, type State } from "./useLaunch";
 
@@ -8,7 +8,7 @@ const INTENT_UI = { "mua ngay": "bg-ok/10 text-ok", "so sánh": "bg-brand/10 tex
 
 function Section({ icon, title, note, children }: { icon: React.ReactNode; title: string; note?: string; children: React.ReactNode }) {
   return (
-    <section className="grid gap-2.5">
+    <section className="grid min-w-0 gap-2.5">
       <header className="flex items-baseline justify-between gap-2">
         <h4 className="m-0 inline-flex items-center gap-1.5 text-[13px] font-semibold">{icon}{title}</h4>
         {note && <span className="text-[11.5px] text-ink-soft">{note}</span>}
@@ -47,10 +47,39 @@ export function AdsTab({ s, pid, brand, onGenerate, onUseTitle }: { s: State; pi
     );
 
   const k: AdsKit = kit;
+  const listings = PLATFORMS.map((pl) => s.items[keyOf(pl.id, pid)]).filter(Boolean);
+  const prices = new Set(listings.map((l) => l.price));
+  const ready = [
+    { ok: listings.every((l) => l.attributes.every((a) => a.value && !a.inferred)), t: "Thuộc tính đầy đủ, đã xác nhận trên cả 3 sàn", why: "Agent chỉ gợi ý sản phẩm nó hiểu rõ: đúng biến thể, đúng thông số." },
+    { ok: listings.every((l) => !l.issues.length), t: "Tiêu đề và mô tả không còn câu vi phạm", why: "Câu cam kết điều trị làm sản phẩm bị sàn gỡ và làm agent mất tin tưởng." },
+    { ok: k.intents.length >= 3, t: "Mô tả theo tình huống dùng thật", why: "Người mua hỏi AI bằng câu dài có nhu cầu cụ thể, không gõ từ khóa ngắn." },
+    { ok: k.facts.length >= 3, t: "Có bộ hỏi đáp dữ kiện kèm nguồn", why: "Biến kinh nghiệm tư vấn thành dữ liệu để AI trích dẫn được." },
+    { ok: prices.size === 1, t: "Giá khớp giữa các sàn", why: "Giá và tồn kho lệch nhau làm AI hạ thứ hạng hoặc loại sản phẩm." },
+    { ok: false, t: "Đánh giá từ bên thứ ba", why: "Chưa có dữ liệu. AI trích dẫn review, bài so sánh và diễn đàn nhiều hơn trang của brand." },
+  ];
+  const score = ready.filter((r) => r.ok).length;
   return (
-    <div className="grid gap-6">
+    <div className="grid min-w-0 gap-6">
+      <Section icon={<Bot size={14} />} title="Mức sẵn sàng cho AI agent" note={`${score}/${ready.length} tín hiệu`}>
+        <div className="h-1.5 overflow-hidden rounded-full bg-surface-2">
+          <motion.div className="h-full rounded-full bg-brand" initial={{ width: 0 }} animate={{ width: `${(score / ready.length) * 100}%` }} />
+        </div>
+        <ul className="m-0 grid list-none gap-2 p-0">
+          {ready.map((r) => (
+            <li key={r.t} className="grid grid-cols-[18px_1fr] gap-2">
+              {r.ok ? <Check size={15} className="mt-0.5 text-ok" /> : <AlertTriangle size={15} className="mt-0.5 text-warn" />}
+              <div>
+                <b className="text-[13px] font-medium">{r.t}</b>
+                <p className="text-[12px] text-ink-soft">{r.why}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="text-[11.5px] text-ink-soft">Dựa trên các tín hiệu giới làm SEO quan sát được và khuyến nghị về dữ liệu sản phẩm của OpenAI, Shopify. Không phải công thức chính thức.</p>
+      </Section>
+
       <Section icon={<MessageSquareText size={14} />} title="Người mua hỏi, thẻ tài trợ hiện ra" note="Minh họa">
-        <div className="grid gap-3 rounded-2xl bg-surface-2/60 p-3.5">
+        <div className="grid min-w-0 gap-3 rounded-2xl bg-surface-2/60 p-3.5">
           <AnimatePresence mode="wait">
             <motion.p key={intent} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="max-w-[88%] justify-self-end rounded-2xl rounded-br-md bg-ink px-3.5 py-2 text-[13px] text-white">
               {k.intents[intent]}
@@ -72,7 +101,7 @@ export function AdsTab({ s, pid, brand, onGenerate, onUseTitle }: { s: State; pi
             <span className="inline-flex items-center gap-1 justify-self-start rounded-lg bg-ink px-2.5 py-1 text-[12px] font-semibold text-white">{k.ad.cta} <ArrowRight size={12} /></span>
           </motion.div>
         </div>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex min-w-0 flex-wrap gap-1.5">
           {k.intents.map((t, i) => (
             <button key={i} type="button" onClick={() => setIntent(i)} className={`max-w-full truncate rounded-full border px-2.5 py-1 text-left text-[12px] transition-colors ${i === intent ? "border-brand bg-brand/[0.06] text-brand" : "border-line hover:border-brand"}`} title={t}>
               {t}
